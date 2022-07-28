@@ -1,4 +1,5 @@
 import React from "react";
+import {Product} from "./Product"
 
 const Products = (props) => {
     const {loading, products} = props;
@@ -6,7 +7,12 @@ const Products = (props) => {
         <div>
             {loading ? (<p>Loading</p>) 
             :
-            <h1>Got the blog posts</h1> }
+            (
+                <div>
+                {products.map(product => (<Product key={product.id} product={product}/>))}
+                </div>
+            )
+            }
         </div>
     )
 }
