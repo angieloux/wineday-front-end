@@ -1,4 +1,4 @@
-[
+var products = [
     {
       points: 89,
       title: 'Caymus 1998 Cabernet Sauvignon (Napa Valley)',
