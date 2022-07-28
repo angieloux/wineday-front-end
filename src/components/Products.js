@@ -1,5 +1,6 @@
 import React from "react";
-import {Product} from "./Product"
+import {ProductPreview} from "./ProductPreview"
+import { CardDeck } from "../styled-components";
 
 const Products = (props) => {
     const {loading, products} = props;
@@ -8,9 +9,9 @@ const Products = (props) => {
             {loading ? (<p>Loading</p>) 
             :
             (
-                <div>
-                {products.map(product => (<Product key={product.id} product={product}/>))}
-                </div>
+                <CardDeck>
+                {products.sort((a, b) => b.price - a.price).map(product => (<ProductPreview key={product.id} product={product}/>))}
+                </CardDeck>
             )
             }
         </div>
