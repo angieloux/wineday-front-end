@@ -4,6 +4,7 @@ import { getProducts } from './services/productServices';
 import Products from './components/Products';
 import { GlobalStyle } from './styled-components/globalStyles';
 import Product from './components/Product';
+import { LoginForm } from './components/LoginForm';
 
 const App = () => {
   
@@ -26,6 +27,7 @@ const App = () => {
       <Route path="/" element={<Navigate to="/products"/>}/>
       <Route path="/products" element={<Products loading={loading} products={products}/>}/>
       <Route path="/products/:id" element={<Product />}/>
+      <Route path="/login" element={<LoginForm />}/>
 
       </Routes>
       </BrowserRouter>    

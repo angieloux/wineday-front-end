@@ -1,3 +1,7 @@
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 import styled from 'styled-components'
 
 export const CardDeck = styled.div`
@@ -37,4 +41,37 @@ export const Card = styled.div`
     @media (max-width: 480px) {
         flex: 0 1 80%
     }
+`
+
+export const Label = styled.label`
+    font-size: 1.2em;
+`
+
+export const TextArea = styled.textarea`
+    height: 200px;
+    margin: .5em;
+    width: 70vw;
+`
+
+export const Input = styled.input`
+    width: 60vw;
+    margin: .5em;
+`
+
+export const Block = styled.div`
+    display: grid;
+    width: 100vw;
+`
+
+export const Select = styled.select`
+    border: ${props => props.error ? "1px solid red" : "1px solid #dddddd"};
+    font-size: 1.2em;
+    width: 60vw;
+`
+
+export const Option = styled.option`
+    font-size: 1.2em;
+`
+export const TextField = styled.option`
+    width: 70vw;
 `
