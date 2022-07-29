@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import { useGlobalState } from "../config/store";
 import { getProduct } from "../services/productServices";
 import { Card } from "../styled-components";
 
 const Product = (props) => {
-    // const {product} = props;
+    const {store} = useGlobalState()
+    const {products} = store;
     const [product, setProduct] = useState(null)
     const [loading, setLoading] = useState(true)
 
     const {id} = useParams()
 
     useEffect(() => {
-        getProduct(id)
-        .then(product=> setProduct(product))
+        getProduct(products, id)
+        .then(product => setProduct(product))
         .catch(err => console.log(err))
         .finally(setLoading(false))
-    },[id])
+    },[id, products])
 
     if (loading) {
         return <p>Loading...</p>
