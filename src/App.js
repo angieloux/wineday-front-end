@@ -24,7 +24,8 @@ const App = () => {
       <Route path="/" element={<Navigate to="/products"/>}/>
       <Route path="/products" element={<Products/>}/>
       <Route path="/products/:id" element={<Product />}/>
-      <Route path="/login" element={<LoginForm />}/>
+      <Route path="/auth/login" element={<LoginForm />}/>
+      <Route path="/auth/logout"/>
 
       </Routes>
       </BrowserRouter>    

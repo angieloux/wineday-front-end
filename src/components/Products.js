@@ -15,6 +15,7 @@ const Products = (props) => {
           dispatch({type: `setProducts`, data: products})})
         .catch(error => console.error(error))
         .finally(() => setLoading(false))
+        // eslint-disable-next-line
       },[]) 
     
 console.log(getProducts())

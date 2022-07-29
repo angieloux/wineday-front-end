@@ -1,10 +1,11 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {AppBar, Box, Toolbar, InputBase, IconButton, Typography, Menu, Container, Avatar, Button, Tooltip, MenuItem}from '@mui/material';
 import AdbIcon from '@mui/icons-material/Adb';
 import MenuIcon from '@mui/icons-material/Menu';
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
+import { useGlobalState } from '../config/store';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -50,13 +51,24 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 
-const pages = ['Products', 'Login', 'Sign up'];
-const pageLinks = ['/', '/login', '/register']
+
+
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+let pages
+let pageLinks
 
 const ResponsiveAppBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const {store, dispatch} = useGlobalState()
+  const {loggedInUser} = store
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+
+  pages = loggedInUser ? ['Products', 'Logout'] : ['Products', 'Login', 'Signup']
+  pageLinks = loggedInUser ? ['/', '/'] : ['/', '/auth/login', '/auth/register']
+
+  function handleLogout() {
+    dispatch({type: 'removeLoggedInUser'})
+  }
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -161,19 +173,20 @@ const ResponsiveAppBar = () => {
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}> 
             {pages.map((page, index) => (
                 <Button component={Link} to={`${pageLinks[index]}`}
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={page === "Logout" ? {handleLogout} : (handleCloseNavMenu) }
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page} 
                 
               </Button>
             ))}
-            
+
           </Box>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>gday, {loggedInUser || "guest"}</Box>            
           <Search>
             <SearchIconWrapper>
               <SearchIcon />
