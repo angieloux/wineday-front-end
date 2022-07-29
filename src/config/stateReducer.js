@@ -7,6 +7,18 @@ const stateReducer = (state, action) => {
             }
             
         }
+        case "setLoggedInUser": {
+            return {
+                ...state,
+                loggedInUser: action.data
+            }
+        }
+        case "removeLoggedInUser": {
+            return {
+                ...state,
+                loggedInUser: null
+            }
+        }
         default: 
             return state;
     }
