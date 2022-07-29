@@ -1,38 +1,34 @@
-import React, {useState, useEffect} from 'react'
+import React, {useReducer} from 'react'
 import { BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
-import { getProducts } from './services/productServices';
 import Products from './components/Products';
 import { GlobalStyle } from './styled-components/globalStyles';
 import Product from './components/Product';
 import { LoginForm } from './components/LoginForm';
 import ResponsiveAppBar from './components/ResponsiveAppBar';
+import stateReducer from './config/stateReducer';
+import initialState from './config/initialState';
+import { StateContext } from './config/store';
 
 const App = () => {
-  
-  const [products, setProducts] = useState([]);
+  const [store, dispatch] = useReducer(stateReducer, initialState);
   // When we first load up the app, set loading to true
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    getProducts()
-    .then(products => setProducts(products))
-    .catch(error => console.error(error))
-    .finally(() => setLoading(false))
-  },[])
 
   return (
     <>
       <GlobalStyle/>
-      <ResponsiveAppBar></ResponsiveAppBar>
+
+      <StateContext.Provider value={{store, dispatch}}>
       <BrowserRouter>
+      <ResponsiveAppBar></ResponsiveAppBar>
       <Routes>
       <Route path="/" element={<Navigate to="/products"/>}/>
-      <Route path="/products" element={<Products loading={loading} products={products}/>}/>
+      <Route path="/products" element={<Products/>}/>
       <Route path="/products/:id" element={<Product />}/>
       <Route path="/login" element={<LoginForm />}/>
 
       </Routes>
       </BrowserRouter>    
+      </StateContext.Provider>
     </>
   )
 }
