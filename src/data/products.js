@@ -1,16 +1,5 @@
-[
-    {
-      points: 89,
-      title: 'Caymus 1998 Cabernet Sauvignon (Napa Valley)',
-      description: 'Creamy black cherry aromas layered with fresh brussel sprouts and spicy arugula flavors of red plums and toasted oak.',
-      price: 70,
-      variety: 'Cabernet Sauvignon',
-      province: 'California',
-      country: 'US',
-      winery: 'Caymus',
-      region: 'Napa Valley',
-      id: 0
-    },
+const products = [
+    
     {
       points: 98,
       title: 'M. Chapoutier 1999 Le Méal Ermitage  (Hermitage)',
@@ -682,5 +671,19 @@
       winery: 'Musella',
       region: 'Valpolicella Superiore Ripasso',
       id: 56
+    },
+    {
+      points: 89,
+      title: 'Caymus 1998 Cabernet Sauvignon (Napa Valley)',
+      description: 'Creamy black cherry aromas layered with fresh brussel sprouts and spicy arugula flavors of red plums and toasted oak.',
+      price: 70,
+      variety: 'Cabernet Sauvignon',
+      province: 'California',
+      country: 'US',
+      winery: 'Caymus',
+      region: 'Napa Valley',
+      id: 57
     }
   ]
+
+  export default products
