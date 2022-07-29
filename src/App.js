@@ -5,6 +5,7 @@ import Products from './components/Products';
 import { GlobalStyle } from './styled-components/globalStyles';
 import Product from './components/Product';
 import { LoginForm } from './components/LoginForm';
+import ResponsiveAppBar from './components/ResponsiveAppBar';
 
 const App = () => {
   
@@ -22,6 +23,7 @@ const App = () => {
   return (
     <>
       <GlobalStyle/>
+      <ResponsiveAppBar></ResponsiveAppBar>
       <BrowserRouter>
       <Routes>
       <Route path="/" element={<Navigate to="/products"/>}/>
