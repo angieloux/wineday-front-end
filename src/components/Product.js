@@ -13,11 +13,11 @@ const Product = (props) => {
     const {id} = useParams()
 
     useEffect(() => {
-        getProduct(products, id)
+        getProduct(id)
         .then(product => setProduct(product))
         .catch(err => console.log(err))
         .finally(setLoading(false))
-    },[id, products])
+    },[id])
 
     if (loading) {
         return <p>Loading...</p>

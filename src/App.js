@@ -1,4 +1,4 @@
-import React, {useReducer} from 'react'
+import React, {useEffect, useReducer} from 'react'
 import { BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
 import Products from './components/Products';
 import { GlobalStyle } from './styled-components/globalStyles';
@@ -8,11 +8,18 @@ import ResponsiveAppBar from './components/ResponsiveAppBar';
 import stateReducer from './config/stateReducer';
 import initialState from './config/initialState';
 import { StateContext } from './config/store';
+import { getProducts } from './services/productServices';
 
 const App = () => {
   const [store, dispatch] = useReducer(stateReducer, initialState);
-  // When we first load up the app, set loading to true
-
+  
+  useEffect(() => {
+    getProducts()
+    .then(products => {
+      dispatch({type: `setProducts`, data: products})})
+    .catch(error => console.error(error))
+    // eslint-disable-next-line
+  },[]) 
   return (
     <>
       <GlobalStyle/>
