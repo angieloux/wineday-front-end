@@ -18,8 +18,3 @@ export const getProduct = async (id) => {
         throw err
     }
 }
-
-// const getNextId = () => {
-//     const maxId = Math.max(...useResolvedPath.map(user => user.id));
-//     return maxId + 1;
-// }
