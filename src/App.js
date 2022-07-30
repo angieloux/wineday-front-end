@@ -9,9 +9,11 @@ import stateReducer from './config/stateReducer';
 import initialState from './config/initialState';
 import { StateContext } from './config/store';
 import { getProducts } from './services/productServices';
+import { retrieveUserFromJWT } from './services/userServices';
 
 const App = () => {
   const [store, dispatch] = useReducer(stateReducer, initialState);
+  const token = sessionStorage.getItem('jwt');
   
   useEffect(() => {
     getProducts()
@@ -20,6 +22,12 @@ const App = () => {
     .catch(error => console.error(error))
     // eslint-disable-next-line
   },[]) 
+
+  useEffect(() => {
+    retrieveUserFromJWT()
+    .then(response => dispatch({type: 'setLoggedInUser', data: response.username}))
+  }, [token])
+
   return (
     <>
       <GlobalStyle/>

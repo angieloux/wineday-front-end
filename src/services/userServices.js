@@ -8,3 +8,13 @@ export const logInUser = async (loginDetails) => {
         throw err
     }
 }
+
+export const retrieveUserFromJWT = async () => {
+    try {
+        const jwt = sessionStorage.getItem('jwt')
+        const response = await winedayAPI.post('/auth/logged_in_user', {jwt})
+        return response.data
+    } catch(err) {
+        console.log(err)
+    }
+}
