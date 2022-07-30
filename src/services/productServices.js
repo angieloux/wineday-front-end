@@ -1,4 +1,3 @@
-import products from '../data/products'
 import winedayAPI from '../config/api'
 
 export const getProducts = async () => { 
