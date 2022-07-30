@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { useGlobalState } from "../config/store";
 import { getProduct } from "../services/productServices";
 import { Card } from "../styled-components";
 
 const Product = (props) => {
-    const {store} = useGlobalState()
-    const {products} = store;
     const [product, setProduct] = useState(null)
     const [loading, setLoading] = useState(true)
 

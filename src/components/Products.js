@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {ProductPreview} from "./ProductPreview"
 import { CardDeck } from "../styled-components";
 import { useGlobalState } from "../config/store";
