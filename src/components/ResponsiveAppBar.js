@@ -68,6 +68,7 @@ const ResponsiveAppBar = () => {
 
   function handleLogout() {
     dispatch({type: 'removeLoggedInUser'})
+    dispatch({type: 'removeJWT'})
   }
 
   const handleOpenNavMenu = (event) => {

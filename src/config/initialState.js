@@ -1,6 +1,7 @@
 const initialState = {
     products: [],
-    loggedInUser: null
+    loggedInUser: null,
+    jwt: null
 }
 
 export default initialState
