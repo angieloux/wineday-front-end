@@ -1,7 +1,12 @@
 const initialState = {
     products: [],
     loggedInUser: null,
-    jwt: null
+    user: {
+        id: sessionStorage.getItem('id') || null,
+        email: sessionStorage.getItem('email') || null,
+        username: sessionStorage.getItem('email') || null,
+        jwt: sessionStorage.getItem('jwt') || null
+    }
 }
 
 export default initialState

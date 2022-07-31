@@ -1,45 +1,48 @@
-import React, {useEffect, useReducer} from 'react'
+import React, {useReducer} from 'react'
 import { BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
 import Products from './components/Products';
-import { GlobalStyle } from './styled-components/globalStyles';
+// import { GlobalStyle } from './styled-components/globalStyles';
 import Product from './components/Product';
 import { LoginForm } from './components/LoginForm';
 // import ResponsiveAppBar from './components/nav/Nav';
-import stateReducer from './context/stateReducer';
+import globalReducer from './context/globalReducer';
 import initialState from './context/initialState';
-import { StateContext } from './context/globalState';
-import { getProducts } from './services/productServices';
-import { retrieveUserFromJWT } from './services/userServices';
+import { GlobalContext } from './context/globalContext';
+// import { getProducts } from './services/productServices';
+// import { retrieveUserFromJWT } from './services/userServices';
 import './App.scss'
 import {Header} from './components/header/Header'
 import {Hero} from './components/hero/Hero'
 
-const App = () => {
-  const [store, dispatch] = useReducer(stateReducer, initialState);
-  const token = sessionStorage.getItem('jwt');
-  
-  useEffect(() => {
-    getProducts()
-    .then(products => {
-      dispatch({type: `setProducts`, data: products})})
-    .catch(error => console.error(error))
-    // eslint-disable-next-line
-  },[]) 
 
-  useEffect(() => {
-    retrieveUserFromJWT()
-    .then(response => dispatch({type: 'setLoggedInUser', data: response.username}))
-  }, [token])
+
+const App = () => {
+  const [globalStore, globalDispatch] = useReducer(globalReducer, initialState);
+  const {user} = globalStore;
+  // const token = sessionStorage.getItem('jwt');
+  console.log(globalStore)
+  // useEffect(() => {
+  //   getProducts()
+  //   .then(products => {
+  //     dispatch({type: `setProducts`, data: products})})
+  //   .catch(error => console.error(error))
+  //   // eslint-disable-next-line
+  // },[]) 
+
+  // useEffect(() => {
+  //   retrieveUserFromJWT()
+  //   .then(response => dispatch({type: 'setLoggedInUser', data: response.username}))
+  // }, [token])
 
   return (
     <>
       {/* <GlobalStyle/> */}
 
-      <StateContext.Provider value={{store, dispatch}}>
+      <GlobalContext.Provider value={{globalStore, globalDispatch}}>
       <BrowserRouter>
       
       <Header></Header>
-      <Hero></Hero>
+      <Hero><p>{user.username}</p></Hero>
       <Routes>
       <Route path="/" element={<Navigate to="/products"/>}/>
       <Route path="/products" element={<Products/>}/>
@@ -48,8 +51,9 @@ const App = () => {
       <Route path="/auth/logout"/>
 
       </Routes>
+      
       </BrowserRouter>    
-      </StateContext.Provider>
+      </GlobalContext.Provider>
     </>
   )
 }
