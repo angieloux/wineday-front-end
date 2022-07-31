@@ -2,12 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './header.styles.scss'
 import CartIcon from '../cart/cart-icon/CartIcon';
+import logoIcon from '../../assets/logo.png'
 
 export const Header = () => {
     return (
         <nav className='nav-menu container'>
       <div className='logo'>
-        <Link to='/'>WINEDAY</Link>
+            <img src={logoIcon} alt="Logo Icon"/>
+            <Link to='/'>WINEDAY</Link>
       </div>
       <ul>
         <li>
