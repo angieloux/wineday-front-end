@@ -5,11 +5,10 @@ import Header from "../header/Header";
 const Layout = ({children}) => {
     return (
         <>
-        <Header>
+        <Header/>
             <main>
                 {children}
             </main>
-        </Header>
         <Footer/>
         </>
     )
