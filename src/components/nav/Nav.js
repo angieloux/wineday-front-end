@@ -5,7 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { styled, alpha } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom';
-import { useGlobalState } from '../config/store';
+import { useGlobalState } from '../../context/globalState';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -57,7 +57,7 @@ const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 let pages
 let pageLinks
 
-const ResponsiveAppBar = () => {
+const Nav = () => {
   const {store, dispatch} = useGlobalState()
   const {loggedInUser} = store
   const [anchorElNav, setAnchorElNav] = useState(null);
@@ -234,4 +234,4 @@ const ResponsiveAppBar = () => {
     </AppBar>
   );
 };
-export default ResponsiveAppBar;
+export default Nav;

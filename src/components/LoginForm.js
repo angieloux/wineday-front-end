@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import { Label} from '../styled-components';
 import {Button, TextField, Container} from '@mui/material';
-import { useGlobalState } from '../config/store';
+import { useGlobalState } from '../context/globalState';
 import { useNavigate } from 'react-router';
 import { logInUser } from '../services/userServices';
 import { parseError } from '../config/api';

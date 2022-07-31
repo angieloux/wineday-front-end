@@ -4,12 +4,14 @@ import Products from './components/Products';
 import { GlobalStyle } from './styled-components/globalStyles';
 import Product from './components/Product';
 import { LoginForm } from './components/LoginForm';
-import ResponsiveAppBar from './components/ResponsiveAppBar';
-import stateReducer from './config/stateReducer';
-import initialState from './config/initialState';
-import { StateContext } from './config/store';
+// import ResponsiveAppBar from './components/nav/Nav';
+import stateReducer from './context/stateReducer';
+import initialState from './context/initialState';
+import { StateContext } from './context/globalState';
 import { getProducts } from './services/productServices';
 import { retrieveUserFromJWT } from './services/userServices';
+import './App.scss'
+import {Header} from './components/header/Header'
 
 const App = () => {
   const [store, dispatch] = useReducer(stateReducer, initialState);
@@ -30,11 +32,12 @@ const App = () => {
 
   return (
     <>
-      <GlobalStyle/>
+      {/* <GlobalStyle/> */}
 
       <StateContext.Provider value={{store, dispatch}}>
       <BrowserRouter>
-      <ResponsiveAppBar></ResponsiveAppBar>
+      {/* <Nav></Nav> */}
+      <Header></Header>
       <Routes>
       <Route path="/" element={<Navigate to="/products"/>}/>
       <Route path="/products" element={<Products/>}/>
