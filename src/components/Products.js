@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {ProductPreview} from "./ProductPreview"
 import { CardDeck } from "../styled-components";
-import { useGlobalState } from "../context/globalState";
+import { useGlobalState } from "../context/globalContext";
 import { getProducts } from "../services/productServices";
+
 
 const Products = (props) => {
     const loading = false
-    const {store} = useGlobalState();
-    const {products} = store
+    const {globalStore, globalDispatch} = useGlobalState();
+    const {products} = globalStore
     
-console.log(getProducts())
+    
+    useEffect(() => {
+        getProducts()
+        .then(products => {
+          globalDispatch({type: `setProducts`, data: products})})
+        .catch(error => console.error(error))
+        // eslint-disable-next-line
+      },[])
+
     return(
         
         <div>
