@@ -12,6 +12,7 @@ import { getProducts } from './services/productServices';
 import { retrieveUserFromJWT } from './services/userServices';
 import './App.scss'
 import {Header} from './components/header/Header'
+import {Hero} from './components/hero/Hero'
 
 const App = () => {
   const [store, dispatch] = useReducer(stateReducer, initialState);
@@ -36,8 +37,9 @@ const App = () => {
 
       <StateContext.Provider value={{store, dispatch}}>
       <BrowserRouter>
-      {/* <Nav></Nav> */}
+      
       <Header></Header>
+      <Hero></Hero>
       <Routes>
       <Route path="/" element={<Navigate to="/products"/>}/>
       <Route path="/products" element={<Products/>}/>
