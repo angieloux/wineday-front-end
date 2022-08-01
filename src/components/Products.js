@@ -1,7 +1,7 @@
 import React from "react";
 import {ProductPreview} from "./ProductPreview"
 import { CardDeck } from "../styled-components";
-import { useGlobalState } from "../config/store";
+import { useGlobalState } from "../context/globalState";
 import { getProducts } from "../services/productServices";
 
 const Products = (props) => {
