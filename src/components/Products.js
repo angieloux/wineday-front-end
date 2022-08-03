@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import {ProductPreview} from "./ProductPreview"
+import FeaturedProduct from "./pages/product-preview/ProductPreview"
 import { CardDeck } from "../styled-components";
 import { useGlobalState } from "../context/globalContext";
 import { getProducts } from "../services/productServices";
@@ -26,7 +26,7 @@ const Products = (props) => {
             :
             (
                 <CardDeck>
-                {products.sort((a, b) => b.price - a.price).map(product => (<ProductPreview key={product.id} product={product}/>))}
+                {products.sort((a, b) => b.price - a.price).map(product => (<FeaturedProduct key={product.id} product={product}/>))}
                 </CardDeck>
             )
             }
