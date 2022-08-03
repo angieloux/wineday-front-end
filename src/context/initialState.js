@@ -6,7 +6,8 @@ const initialState = {
         email: sessionStorage.getItem('email') || null,
         username: sessionStorage.getItem('email') || null,
         jwt: sessionStorage.getItem('jwt') || null
-    }
+    },
+    product: {}
 }
 
 export default initialState
