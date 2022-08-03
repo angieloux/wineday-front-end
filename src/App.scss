@@ -1,10 +1,14 @@
 @charset "utf-8";
 
 // Import from bulma
-@import '../node_modules/bulma/sass/utilities/_all.sass';
-@import '../node_modules/bulma/sass/elements/button.sass';
-@import '../node_modules/bulma/sass/elements/container.sass';
-@import '../node_modules/bulma/sass/layout/hero.sass';
+@import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/elements/button.sass";
+@import "../node_modules/bulma/sass/elements/container.sass";
+@import "../node_modules/bulma/sass/layout/hero.sass";
+
+* {
+  box-sizing: border-box;
+}
 
 .app {
   position: relative;
@@ -21,7 +25,7 @@ img {
 }
 
 #shop-now {
-  font-weight: 600; 
+  font-weight: 600;
   &:hover {
     background-color: #606060;
   }
@@ -39,7 +43,7 @@ img {
     cursor: pointer;
   }
 
-  @media(min-width: 1024px) {
+  @media (min-width: 1024px) {
     .products {
       display: flex;
       justify-content: space-between;
@@ -52,8 +56,8 @@ img {
   }
 }
 
-// single product page 
-.name-price {
+// single product page
+.product-name-and-price {
   p {
     font-size: 1.2rem;
     font-weight: bold;
@@ -87,9 +91,9 @@ img {
 form {
   padding: 2rem;
   text-align: center;
-  input[type=text],
-  input[type=email],
-  input[type=password]{
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
     width: 60%;
   }
 
@@ -122,16 +126,16 @@ form {
   }
 }
 
-@media(min-width: 1024px) {
+@media (min-width: 1024px) {
   form {
     width: 60%;
     margin: 0 auto;
 
-    input[type=text],
-    input[type=email],
-    input[type=password]{
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
       width: 65%;
-    } 
+    }
   }
 }
 
