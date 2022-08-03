@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { getProduct } from "../../../services/productServices";
 import Layout from "../../shared/Layout";
 import "./product.styles.scss";
+import image from "../../../assets/product.jpg";
 
 const SingleProduct = (props) => {
   const [product, setProduct] = useState(null);
@@ -41,7 +42,7 @@ const SingleProduct = (props) => {
     <Layout>
       <div className="single-product-container">
         <div className="product-image">
-          <img src="/" alt={title} />
+          <img src={image} alt={title} />
         </div>
 
         <div className="product-details">
