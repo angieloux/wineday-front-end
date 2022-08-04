@@ -1,16 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router";
-
 import { getProduct } from "../../../services/productServices";
 import Layout from "../../shared/Layout";
 import "./product.styles.scss";
 import image from "../../../assets/product.jpg";
+import { inCart } from "../../../utils/helpers";
+import { CartContext } from "../../../context/cartContext";
 
 const SingleProduct = (props) => {
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
+  const { cartItems, addItem, addMore } = useContext(CartContext);
 
   const { id } = useParams();
+  const itemInCart = inCart(product, cartItems);
+  console.log(cartItems);
 
   useEffect(() => {
     getProduct(id)
@@ -50,23 +54,29 @@ const SingleProduct = (props) => {
             <h1>{title}</h1>
             <p>{price}</p>
           </div>
-
-          <div className="add-to-cart-btns">
+          {!itemInCart ? (
             <button
-              className="button is-white nomad-btn"
-              id="btn-white-outline"
+              className="button is-black nomad-btn"
+              onClick={() => addItem(product)}
             >
               ADD TO CART
             </button>
-
+          ) : (
             <button
-              className="button is-black nomad-btn"
+              className="button is-white nomad-btn"
               id="btn-white-outline"
+              onClick={() => addMore(product)}
             >
-              PROCEED TO CHECKOUT
+              ADD MORE
             </button>
-          </div>
-
+          )}
+          <button
+            className="button is-black nomad-btn"
+            id="btn-white-outline"
+            onClick={() => {}}
+          >
+            PROCEED TO CHECKOUT
+          </button>
           <div className="product-description">
             <h3>{variety}</h3>
             <h4>Points: {points}</h4>
