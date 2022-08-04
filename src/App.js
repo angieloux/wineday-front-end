@@ -10,6 +10,7 @@ import { retrieveUserFromJWT } from "./services/userServices";
 import "./App.scss";
 import NotFound from "./components/NotFound";
 import Home from "./components/Home";
+import Cart from "./components/pages/cart/Cart";
 
 const App = () => {
   const [globalStore, globalDispatch] = useReducer(globalReducer, initialState);
@@ -29,8 +30,10 @@ const App = () => {
           {/* <Hero><p>{user.username}</p></Hero> */}
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/products" element={<AllProducts />} />
             <Route path="/products/:id" element={<SingleProduct />} />
+
             <Route path="/auth/login" element={<LoginForm />} />
             <Route path="/auth/logout" />
             <Route path="*" element={<NotFound />} />
