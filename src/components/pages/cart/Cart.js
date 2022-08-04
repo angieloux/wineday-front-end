@@ -1,11 +1,21 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { CartContext } from "../../../context/cartContext";
 import Layout from "../../shared/Layout";
 import "./cart.styles.scss";
 import CartItem from "./CartItem";
+import CartTotal from "./CartTotal";
 
 const Cart = () => {
-  const { cartItems, itemCount, total } = useContext(CartContext);
+  const {
+    cartItems,
+    itemCount,
+    total,
+    addMore,
+    decrease,
+    trashProduct,
+    clearCart,
+  } = useContext(CartContext);
+  const cartFunctions = { addMore, decrease, trashProduct };
 
   return (
     <Layout>
@@ -18,9 +28,14 @@ const Cart = () => {
             <div className="cart-page">
               <div className="cart-item-container">
                 {cartItems.map((item) => (
-                  <CartItem {...item} key={item.id} />
+                  <CartItem {...item} key={item.id} {...cartFunctions} />
                 ))}
               </div>
+              <CartTotal
+                itemCount={itemCount}
+                total={total}
+                clearCart={clearCart}
+              ></CartTotal>
             </div>
           </>
         )}

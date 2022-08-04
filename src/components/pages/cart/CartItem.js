@@ -6,8 +6,18 @@ import {
 } from "../../../assets/icons";
 import image from "../../../assets/product.jpg";
 
-const CartItem = (product) => {
-  const { title, price, quantity } = product;
+const CartItem = (props) => {
+  const {
+    title,
+    id,
+    description,
+    price,
+    quantity,
+    addMore,
+    decrease,
+    trashProduct,
+  } = props;
+  const product = { title, price, quantity, id, description };
 
   return (
     <div className="cart-item">
@@ -22,17 +32,20 @@ const CartItem = (product) => {
         <p>{`Quantity: ${quantity}`}</p>
       </div>
       <div className="btns-container">
-        <button className="btn-increase">
+        <button className="btn-increase" onClick={() => addMore(product)}>
           <PlusCircleIcon width="20px" />
         </button>
 
         {quantity === 1 && (
-          <button className="btn-increase">
+          <button
+            className="btn-increase"
+            onClick={() => trashProduct(product)}
+          >
             <TrashIcon width="20px" />
           </button>
         )}
         {quantity > 1 && (
-          <button className="btn-trash">
+          <button className="btn-trash" onClick={() => decrease(product)}>
             <MinusCircleIcon width="20px" />
           </button>
         )}

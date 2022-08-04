@@ -2,7 +2,7 @@ export const sumCart = (cartItems) => {
   return {
     itemCount: cartItems.reduce((sum, item) => sum + item.quantity, 0),
     total: cartItems.reduce(
-      (total, item) => total * (item.price * item.quantity),
+      (total, item) => total + parseInt(item.price) * item.quantity,
       0
     ),
   };
@@ -25,14 +25,39 @@ const cartReducer = (state, action) => {
 
     case "ADD_MORE":
       // find the item to increase
-      const increaseItem = state.cartItems.findIndex(
+      const itemToIncrease = state.cartItems.findIndex(
         (item) => item.id === action.payload.id
       );
-      state.cartItems[increaseItem].quantity++;
+      state.cartItems[itemToIncrease].quantity++;
       return {
         ...state,
         cartItems: [...state.cartItems],
         ...sumCart(state.cartItems),
+      };
+    case "DECREASE":
+      // find the item to decrease
+      const itemToDecrease = state.cartItems.findIndex(
+        (item) => item.id === action.payload.id
+      );
+      const product = state.cartItems[itemToDecrease];
+      if (product.quantity > 1) {
+        product.quantity--;
+      }
+    case "TRASH":
+      // find the item to delete
+      const newCartItems = state.cartItems.filter(
+        (item) => item.id !== action.payload.id
+      );
+      return {
+        ...state,
+        cartItems: [...newCartItems],
+        ...sumCart(newCartItems),
+      };
+    case "CLEAR":
+      return {
+        cartItems: [],
+        itemCount: 0,
+        total: 0,
       };
     default:
       return state;
