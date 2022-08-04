@@ -1,22 +1,27 @@
 .hero-image {
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0,0,0,0.2)),
-    url('../../assets/hero.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.2)),
+    url("../../assets/hero.jpg") center/cover no-repeat;
 }
 
 span {
-    font-style: italic;
+  font-style: italic;
 }
 
 .hero-title {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
-@media(min-width: 1024px) {
-    .hero-image {
-        font-size: 2.5rem;
-    }
+@media (min-width: 1024px) {
+  .hero-image {
+    font-size: 2.5rem;
+  }
 }
+// @media (min-width: 180x) and (max-width: 300px) {
+//   .hero-image {
+//     min-height: 80vh;
+//   }
+// }
 
 #shop-now-btn {
-    margin-top: -15px;
+  margin-top: -15px;
 }

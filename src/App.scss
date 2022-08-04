@@ -10,6 +10,9 @@
   box-sizing: border-box;
 }
 
+body {
+  width: 100vw;
+}
 .app {
   position: relative;
   min-height: 100vh;

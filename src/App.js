@@ -2,7 +2,7 @@ import React, { useReducer, useEffect } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AllProducts from "./components/pages/all-products/AllProducts";
 import SingleProduct from "./components/pages/single-product/SingleProduct";
-import { LoginForm } from "./components/LoginForm";
+import { LoginForm } from "./components/log-in/LoginForm";
 import globalReducer from "./context/globalReducer";
 import initialState from "./context/initialState";
 import { GlobalContext } from "./context/globalContext";
@@ -11,6 +11,7 @@ import "./App.scss";
 import NotFound from "./components/NotFound";
 import Home from "./components/Home";
 import Cart from "./components/pages/cart/Cart";
+import SignUpForm from "./components/sign-up/SignUpForm";
 
 const App = () => {
   const [globalStore, globalDispatch] = useReducer(globalReducer, initialState);
@@ -18,16 +19,17 @@ const App = () => {
   const token = sessionStorage.getItem("jwt");
 
   useEffect(() => {
-    retrieveUserFromJWT().then((response) =>
-      globalDispatch({ type: "setLoggedInUser", data: response.username })
-    );
+    retrieveUserFromJWT()
+      .then((response) => {
+        globalDispatch({ type: "setLoggedInUser", data: response.username });
+      })
+      .catch((error) => console.error(error));
   }, [token]);
 
   return (
     <>
       <GlobalContext.Provider value={{ globalStore, globalDispatch }}>
         <BrowserRouter>
-          {/* <Hero><p>{user.username}</p></Hero> */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
@@ -35,6 +37,7 @@ const App = () => {
             <Route path="/products/:id" element={<SingleProduct />} />
 
             <Route path="/auth/login" element={<LoginForm />} />
+            <Route path="/auth/register" element={<SignUpForm />} />
             <Route path="/auth/logout" />
             <Route path="*" element={<NotFound />} />
           </Routes>
