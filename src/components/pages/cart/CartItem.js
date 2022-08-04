@@ -37,15 +37,12 @@ const CartItem = (props) => {
         </button>
 
         {quantity === 1 && (
-          <button
-            className="btn-increase"
-            onClick={() => trashProduct(product)}
-          >
+          <button className="btn-trash" onClick={() => trashProduct(product)}>
             <TrashIcon width="20px" />
           </button>
         )}
         {quantity > 1 && (
-          <button className="btn-trash" onClick={() => decrease(product)}>
+          <button className="btn-decrease" onClick={() => decrease(product)}>
             <MinusCircleIcon width="20px" />
           </button>
         )}

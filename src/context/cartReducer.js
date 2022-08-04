@@ -43,6 +43,11 @@ const cartReducer = (state, action) => {
       if (product.quantity > 1) {
         product.quantity--;
       }
+      return {
+        ...state,
+        cartItems: [...state.cartItems],
+        ...sumCart(state.cartItems),
+      };
     case "TRASH":
       // find the item to delete
       const newCartItems = state.cartItems.filter(
