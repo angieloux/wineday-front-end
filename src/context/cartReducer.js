@@ -1,4 +1,10 @@
+const storeCartItems = (cartItems) => {
+  const cart = cartItems.length > 0 ? cartItems : [];
+  localStorage.setItem("cart", JSON.stringify(cart));
+};
+
 export const sumCart = (cartItems) => {
+  storeCartItems(cartItems);
   return {
     itemCount: cartItems.reduce((sum, item) => sum + item.quantity, 0),
     total: cartItems.reduce(
@@ -59,6 +65,7 @@ const cartReducer = (state, action) => {
         ...sumCart(newCartItems),
       };
     case "CLEAR":
+      localStorage.removeItem("cart");
       return {
         cartItems: [],
         itemCount: 0,

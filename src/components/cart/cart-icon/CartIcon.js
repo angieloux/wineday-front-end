@@ -5,7 +5,7 @@ import { CartContext } from "../../../context/cartContext";
 import "./cart-icon.styles.scss";
 
 const CartIcon = () => {
-  const { itemCount, cartItems } = useContext(CartContext);
+  const { itemCount } = useContext(CartContext);
   const navigate = useNavigate();
 
   return (
