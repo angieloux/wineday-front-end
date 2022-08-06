@@ -1,19 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./header.styles.scss";
 import CartIcon from "../cart/cart-icon/CartIcon";
 import logoIcon from "../../assets/logo.png";
 import { useGlobalState } from "../../context/globalContext";
+import { CartContext } from "../../context/cartContext";
 // import Search from "../shared/Search";
 
 export const Header = () => {
   const { globalStore, globalDispatch } = useGlobalState();
-  const { loggedInUser, username } = globalStore;
+  const { clearCart } = useContext(CartContext);
+  const { username } = globalStore;
   const navigate = useNavigate();
 
   function handleLogout() {
     globalDispatch({ type: "removeLoggedInUser" });
     globalDispatch({ type: "removeJWT" });
+    clearCart();
     navigate("/");
   }
   return (
@@ -30,12 +33,12 @@ export const Header = () => {
           <li>
             <Link to="/products">Shop</Link>
           </li>
-          {!loggedInUser && (
+          {!username && (
             <li>
               <Link to="/auth/login">Log In</Link>
             </li>
           )}
-          {loggedInUser && (
+          {username && (
             <>
               <li onClick={handleLogout}>Sign Out</li>
               <li>
@@ -43,7 +46,7 @@ export const Header = () => {
               </li>
             </>
           )}
-          {!loggedInUser && (
+          {!username && (
             <li>
               <Link to="/auth/register">Sign Up</Link>
             </li>

@@ -18,6 +18,8 @@ const globalReducer = (state, action) => {
       return {
         ...state,
         loggedInUser: null,
+        username: null,
+        userId: null,
       };
     }
     case "setJWT": {

@@ -1,20 +1,22 @@
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { getProduct } from "../../../services/productServices";
 import Layout from "../../shared/Layout";
 import "./product.styles.scss";
 import image from "../../../assets/product.jpg";
 import { inCart } from "../../../utils/helpers";
 import { CartContext } from "../../../context/cartContext";
+import { useGlobalState } from "../../../context/globalContext";
 
 const SingleProduct = (props) => {
+  const { globalStore } = useGlobalState();
+  const { username } = globalStore;
   const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
   const { cartItems, addItem, addMore } = useContext(CartContext);
-
+  const navigate = useNavigate();
   const { id } = useParams();
   const itemInCart = inCart(product, cartItems);
-  console.log(cartItems);
 
   useEffect(() => {
     getProduct(id)
@@ -70,13 +72,27 @@ const SingleProduct = (props) => {
               ADD MORE
             </button>
           )}
-          <button
-            className="button is-black nomad-btn"
-            id="btn-white-outline"
-            onClick={() => {}}
-          >
-            PROCEED TO CHECKOUT
-          </button>
+          {username ? (
+            <button
+              className="button is-black nomad-btn"
+              id="btn-white-outline"
+              onClick={() => {
+                navigate("/cart");
+              }}
+            >
+              PROCEED TO CHECKOUT
+            </button>
+          ) : (
+            <button
+              className="button is-black nomad-btn"
+              id="btn-white-outline"
+              onClick={() => {
+                navigate("/auth/login");
+              }}
+            >
+              LOGIN TO PURCHASE
+            </button>
+          )}
           <div className="product-description">
             <h3>{variety}</h3>
             <h4>Points: {points}</h4>

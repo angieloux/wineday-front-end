@@ -7,10 +7,11 @@ import { createOrder } from "../../../services/orderServices";
 const CartTotal = ({ itemCount, total, clearCart }) => {
   const navigate = useNavigate();
   const { globalStore } = useGlobalState();
-  const { loggedInUserId } = globalStore;
+  const { userId } = globalStore;
+  console.log(userId);
 
   const handleCheckout = (e) => {
-    createOrder(loggedInUserId, total, 100)
+    createOrder(userId, total, 100)
       .then((order) => {
         navigate(`/orders/`);
       })
@@ -31,9 +32,20 @@ const CartTotal = ({ itemCount, total, clearCart }) => {
         <p>Total: ${total}</p>
       </div>
       <div className="checkout">
-        <button className="button is-black" onClick={handleCheckout}>
-          CHECKOUT
-        </button>
+        {userId ? (
+          <button className="button is-black" onClick={handleCheckout}>
+            CHECKOUT
+          </button>
+        ) : (
+          <button
+            className="button is-black"
+            onClick={() => {
+              navigate("/auth/login");
+            }}
+          >
+            SIGN IN
+          </button>
+        )}
 
         <button className="button is-white" onClick={() => clearCart()}>
           CLEAR CART
