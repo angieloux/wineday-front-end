@@ -1,4 +1,4 @@
-# Web App: WineDay
+# Web App: WineDay (frontend)
 
 This repo contains the front-end for a fictional wine e-commerce store built for a fictional business: WineDay. It was developed with React and deployed on Netlify.
 
