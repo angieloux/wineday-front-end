@@ -9,14 +9,19 @@ const CartTotal = ({ itemCount, total, clearCart }) => {
   const navigate = useNavigate();
   const { globalStore } = useGlobalState();
   const { userId } = globalStore;
-  total = formatPrice(total);
 
   const handleCheckout = (e) => {
     createOrder(userId, total, 100)
       .then((order) => {
-        navigate(`/orders/`);
+        if (order) {
+          clearCart();
+          navigate("/orders");
+        } else if (!order) return null;
       })
-      .catch((error) => console.error(error));
+      .catch((err) => {
+        console.error(err);
+      });
+
     // if (!order) {
     //   return null;
     // } else if (order) {
@@ -30,7 +35,7 @@ const CartTotal = ({ itemCount, total, clearCart }) => {
     <div className="total-container">
       <div className="total">
         <p>Total items: {itemCount}</p>
-        <p>Total: {total}</p>
+        <p>Total: {formatPrice(total)}</p>
       </div>
       <div className="checkout">
         {userId ? (

@@ -1,4 +1,4 @@
-import { formatPrice, truncate, capitalize } from "./stringUtils";
+import { formatPrice, truncate, capitalize, formatDate } from "./stringUtils";
 
 describe("formatPrice", () => {
   test("it correctly adds two decimal places to the total", () => {
@@ -36,5 +36,11 @@ describe("capitalize", () => {
     expect(capitalize("i am a string THAT IS UPPERCASE AT THE END")).toBe(
       "I am a string that is uppercase at the end"
     );
+  });
+});
+
+describe("format date", () => {
+  test("it correctly formats a date", () => {
+    expect(formatDate("2022-08-06T07:28:15.503Z")).toBe("6 Aug, 17:28");
   });
 });

@@ -20,6 +20,7 @@ const globalReducer = (state, action) => {
         loggedInUser: null,
         username: null,
         userId: null,
+        orders: [],
       };
     }
     case "setJWT": {
@@ -41,19 +42,10 @@ const globalReducer = (state, action) => {
         ...state,
         orders: action.data,
         order_id: action.data[0],
+        created_at: action.data[3],
       };
     }
-    case "setFinalisedOrder": {
-      console.log(state);
-      console.log("state");
-      console.log("action.data");
-      console.log(action.data);
-      return {
-        ...state,
-        order: action.data,
-        order_id: action.data[0],
-      };
-    }
+
     default:
       return state;
   }

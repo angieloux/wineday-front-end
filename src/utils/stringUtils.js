@@ -7,5 +7,15 @@ export const truncate = (str, limit) => {
 };
 
 export const formatPrice = (total) => {
-  return `$${total.toFixed(2)}`;
+  return `$${Number(total).toFixed(2)}`;
+};
+
+export const formatDate = (isoDate) => {
+  return new Date(isoDate).toLocaleString("en-AU", {
+    month: "short",
+    day: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
 };
