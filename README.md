@@ -1,73 +1,123 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) using the basic template.
+# Web App: WineDay
 
-## What's in the basic template?
-- It includes node-sass, and a style.scss (and removes all .css files)
-- It doesn't use serviceWorker
-- It replaces the react favicon with a flower of life icon
+This repo contains the front-end for a fictional wine e-commerce store built for a fictional business: WineDay. It was developed with React and deployed on Netlify.
 
-## Available Scripts
+The other relavant repos can be found here:
 
-In the project directory, you can run:
+- [Backend](https://github.com/angieloux/wineday-back-end) (created with Ruby on Rails, hosted on heroku)
+- [Planning documentation](https://github.com/angieloux/wineday-docs) (which can also be found at the bottom of this document, for reference).
 
-### `yarn start`
+# Links
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Deployed website](https://wineday.netlify.app/)
+- [Trello board](https://trello.com/b/7TaAyqk8/t3a2)
+- [This front-end repo](https://github.com/angieloux/wineday-front-end)
+- [The back-end repo](https://github.com/angieloux/wineday-back-end)
+- [Original planning repository](https://github.com/angieloux/wineday-docs)
+- [User testing workbook](https://docs.google.com/spreadsheets/d/e/2PACX-1vTbDicEG5nChHB6cVBtfCqUXtTXXtG7mIQkaQ5SaVdKJujoLzqwBdMsFHrW3Xwj4msacdTLbfFt1of1/pubhtml) containing multiple stages of user testing, including 3 development stages and 2 production stages.
+-
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+# Local installation
 
-### `yarn test`
+If you would like to install a local copy of this web app, you will also need to locally host the Ruby on Rails back end server (instructions can be found in the [back-end repo](https://github.com/angieloux/wineday-back-end)).
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Clone the repo:
 
-### `yarn build`
+    git clone git@github.com:angieloux/wineday-front-end.git
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Navigate to the correct directory you just cloned:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+    cd wineday-front-end
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Using your preferred package manager, install dependencies.
 
-### `yarn eject`
+With yarn:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    yarn install
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+With NPM:
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+    npm install
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+To run it locally in development mode:
 
-## Learn More
+    yarn start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Testing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Unit tests have been included for various helper functions within the app. You can see these in action with your preferred package manager.
 
-### Code Splitting
+With yarn:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+    yarn test
 
-### Analyzing the Bundle Size
+With NPM:
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+    npm test
 
-### Making a Progressive Web App
+# Updated project details
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+Due to time constraints the web app has deviated slightly from the original planning documentation as set out in the docs repo. Whilst most features are implemented, the scope of these will be significantly expanded in the coming weeks. These changes are listed below:
 
-### Advanced Configuration
+### Searching
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Searching and filtering has not yet been incorporated into the app, though a Search component is currently being built.
 
-### Deployment
+### User management
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+As mentioned in the original planning phase, an admin role was never considered to be a part of the MVP. Thus, it was not focused on in this version of the app.
 
-### `yarn build` fails to minify
+### Checkout process
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+The checkout process right now is a mockup of what is to come, as Stripe will be implemented as the payments platform. After searching/filtering is implemented, this will be done.
+
+# Dependencies
+
+- **React version:** 18.2.0
+
+##### Key React Dependencies
+
+| Dependency        | Version | use                                                                                               |
+| ----------------- | ------- | ------------------------------------------------------------------------------------------------- |
+| react-router      | 6.3.0   | Routing                                                                                           |
+| react-scripts     | 5.0.1   | Run the build tools required to transform React JSX syntax into plain JavaScript programmatically |
+| axios             | 0.27.2  | HTTP requests from node.js or XMLHttpRequests from the browser                                    |
+| bulma             | 0.9.4   | Styling                                                                                           |
+| styled-components | 5.3.5   | Styling                                                                                           |
+| stripe\*          | 10.0.0  | Payments                                                                                          |
+
+\*(in development)
+
+- ECMAScript 2020 (ES11)
+- Hosted on Netlify (front-end)
+
+### Back-end
+
+#### Ruby on Rails
+
+- **Rails version:** 6.1.6
+- **Ruby version:** 2.7.5p203
+
+##### Key Rails Dependencies
+
+| Dependency       | Version | Use                          |
+| ---------------- | ------- | ---------------------------- |
+| bcrypt           | 3.1.7   | Authentication               |
+| jwt              | 2.4.1   | Authorization                |
+| rack-cors        | 1.1.1   | Make cross domain AJAX calls |
+| database_cleaner | 2.0.1   | Clean database               |
+| factory_bot      | 6.2.1   | Testing                      |
+| rspec-rails      | 5.1.2   | Testing                      |
+| shoulda-matchers | 5.1.0   | Testing                      |
+
+- Hosted on Heroku (back-end)
+- Database: PostgreSQL
+
+### Development tools
+
+- VSCode
+- git
+
+## User Testing
+
+Testing has been carried out throughout all stages of the project, from development throguh to production. A testing spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vTbDicEG5nChHB6cVBtfCqUXtTXXtG7mIQkaQ5SaVdKJujoLzqwBdMsFHrW3Xwj4msacdTLbfFt1of1/pubhtml#). A pdf version of all pages are also saved within the docs/user_testing section of this repo.
