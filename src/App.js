@@ -14,6 +14,7 @@ import Cart from "./components/pages/cart/Cart";
 import SignUpForm from "./components/sign-up/SignUpForm";
 import OrdersList from "./components/pages/orders/OrdersList";
 import OrderConfirmation from "./components/pages/orders/OrderConfirmation";
+import CartContextProvider from "./context/cartContext";
 
 const App = () => {
   const [globalStore, globalDispatch] = useReducer(globalReducer, initialState);
@@ -34,20 +35,22 @@ const App = () => {
   return (
     <>
       <GlobalContext.Provider value={{ globalStore, globalDispatch }}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/products" element={<AllProducts />} />
-            <Route path="/products/:id" element={<SingleProduct />} />
-            <Route path="/orders" element={<OrdersList />} />
-            <Route path="/orders/:id" element={<OrderConfirmation />} />
-            <Route path="/auth/login" element={<LoginForm />} />
-            <Route path="/auth/register" element={<SignUpForm />} />
-            <Route path="/auth/logout" />
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
+        <CartContextProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/products" element={<AllProducts />} />
+              <Route path="/products/:id" element={<SingleProduct />} />
+              <Route path="/orders" element={<OrdersList />} />
+              <Route path="/orders/:id" element={<OrderConfirmation />} />
+              <Route path="/auth/login" element={<LoginForm />} />
+              <Route path="/auth/register" element={<SignUpForm />} />
+              <Route path="/auth/logout" />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </CartContextProvider>
       </GlobalContext.Provider>
     </>
   );

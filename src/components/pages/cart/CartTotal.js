@@ -2,13 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { useGlobalState } from "../../../context/globalContext";
 import { createOrder } from "../../../services/orderServices";
+import { formatPrice } from "../../../utils/stringUtils";
 // import OrderConfirmation from "../orders/OrderConfirmation";
 
 const CartTotal = ({ itemCount, total, clearCart }) => {
   const navigate = useNavigate();
   const { globalStore } = useGlobalState();
   const { userId } = globalStore;
-  console.log(userId);
+  total = formatPrice(total);
 
   const handleCheckout = (e) => {
     createOrder(userId, total, 100)
@@ -29,7 +30,7 @@ const CartTotal = ({ itemCount, total, clearCart }) => {
     <div className="total-container">
       <div className="total">
         <p>Total items: {itemCount}</p>
-        <p>Total: ${total}</p>
+        <p>Total: {total}</p>
       </div>
       <div className="checkout">
         {userId ? (
