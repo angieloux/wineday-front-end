@@ -17,7 +17,7 @@ const SingleProduct = (props) => {
   const { cartItems, addItem, addMore } = useContext(CartContext);
   const navigate = useNavigate();
 
-  const itemInCart = cartItems ? inCart(product, cartItems) : null;
+  const itemInCart = inCart(product, cartItems);
 
   useEffect(() => {
     setLoading(true);

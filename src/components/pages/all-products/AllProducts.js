@@ -15,10 +15,6 @@ const AllProducts = () => {
   ));
   let [searchParams] = useSearchParams();
 
-  function handleSearch(e) {
-    e.preventdefault();
-  }
-
   useEffect(() => {
     setLoading(true);
 
@@ -45,7 +41,7 @@ const AllProducts = () => {
     <Layout>
       <div className="products-list-container">
         <div className="form-container">
-          <form className="search-form" onSubmit={handleSearch}>
+          <form className="search-form">
             <div className="control">
               <input
                 name="q"

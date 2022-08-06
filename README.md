@@ -59,9 +59,9 @@ With NPM:
 
 Due to time constraints the web app has deviated slightly from the original planning documentation as set out in the docs repo. Whilst most features are implemented, the scope of these will be significantly expanded in the coming weeks. These changes are listed below:
 
-### Searching
+### Searching/filtering
 
-Searching and filtering has not yet been incorporated into the app, though a Search component is currently being built.
+While a user can indeed search for a wine by any keyword and they will populate, the search functionality is not as robust as it will be in future versions. There are currently only two filter buttons available as well (Cabernet and Rhone).
 
 ### User management
 
