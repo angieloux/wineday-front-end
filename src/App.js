@@ -24,7 +24,7 @@ const App = () => {
     retrieveUserFromJWT()
       .then((response) => {
         globalDispatch({
-          type: "setLoggedInUserId",
+          type: "setLoggedInUser",
           data: [response.id, response.username],
         });
       })
