@@ -38,6 +38,18 @@ const globalReducer = (state, action) => {
       return {
         ...state,
         orders: action.data,
+        order_id: action.data[0],
+      };
+    }
+    case "setFinalisedOrder": {
+      console.log(state);
+      console.log("state");
+      console.log("action.data");
+      console.log(action.data);
+      return {
+        ...state,
+        order: action.data,
+        order_id: action.data[0],
       };
     }
     default:

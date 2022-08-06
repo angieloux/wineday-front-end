@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router";
 import { useGlobalState } from "../../../context/globalContext";
 import { createOrder } from "../../../services/orderServices";
+// import OrderConfirmation from "../orders/OrderConfirmation";
 
 const CartTotal = ({ itemCount, total, clearCart }) => {
   const navigate = useNavigate();
@@ -9,13 +10,18 @@ const CartTotal = ({ itemCount, total, clearCart }) => {
   const { loggedInUserId } = globalStore;
 
   const handleCheckout = (e) => {
-    const order = createOrder(loggedInUserId, total, 100);
-    if (!order) {
-      return null;
-    } else if (order) {
-      navigate("/orders");
-      clearCart();
-    }
+    createOrder(loggedInUserId, total, 100)
+      .then((order) => {
+        navigate(`/orders/`);
+      })
+      .catch((error) => console.error(error));
+    // if (!order) {
+    //   return null;
+    // } else if (order) {
+    //   clearCart();
+    //   globalDispatch({ type: "setFinalisedOrder", data: order });
+    //   console.log(order);
+    // }
   };
 
   return (

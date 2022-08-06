@@ -13,6 +13,7 @@ import Home from "./components/Home";
 import Cart from "./components/pages/cart/Cart";
 import SignUpForm from "./components/sign-up/SignUpForm";
 import OrdersList from "./components/pages/orders/OrdersList";
+import OrderConfirmation from "./components/pages/orders/OrderConfirmation";
 
 const App = () => {
   const [globalStore, globalDispatch] = useReducer(globalReducer, initialState);
@@ -40,6 +41,7 @@ const App = () => {
             <Route path="/products" element={<AllProducts />} />
             <Route path="/products/:id" element={<SingleProduct />} />
             <Route path="/orders" element={<OrdersList />} />
+            <Route path="/orders/:id" element={<OrderConfirmation />} />
             <Route path="/auth/login" element={<LoginForm />} />
             <Route path="/auth/register" element={<SignUpForm />} />
             <Route path="/auth/logout" />

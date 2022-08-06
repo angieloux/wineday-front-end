@@ -22,3 +22,13 @@ export const getOrders = async () => {
     throw err;
   }
 };
+
+export const getOrder = async (id) => {
+  try {
+    const response = await winedayAPI.get(`/orders/${id}`);
+    console.log(response.data);
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+};
