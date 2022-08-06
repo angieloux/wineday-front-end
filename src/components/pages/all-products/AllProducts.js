@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { useGlobalState } from "../../../context/globalContext";
 import { getProducts } from "../../../services/productServices";
+import { normalizeStr } from "../../../utils/stringUtils";
 import Layout from "../../shared/Layout";
 import ProductPreview from "../product-preview/ProductPreview";
 import "./products.styles.scss";
@@ -24,11 +25,24 @@ const AllProducts = () => {
       .then((products) => {
         if (search) {
           products = products.filter((product) => {
-            const lowerCaseSearch = search.toLowerCase();
+            const formattedSearch = normalizeStr(search.toLowerCase());
+
             return (
-              product.title.toLowerCase().includes(lowerCaseSearch) ||
-              product.description.toLowerCase().includes(lowerCaseSearch) ||
-              product.variety.toLowerCase().includes(lowerCaseSearch)
+              normalizeStr(product.title.toLowerCase()).includes(
+                formattedSearch
+              ) ||
+              normalizeStr(product.variety.toLowerCase()).includes(
+                formattedSearch
+              ) ||
+              normalizeStr(product.description.toLowerCase()).includes(
+                formattedSearch
+              ) ||
+              normalizeStr(product.region.toLowerCase()).includes(
+                formattedSearch
+              ) ||
+              normalizeStr(product.country.toLowerCase()).includes(
+                formattedSearch
+              )
             );
           });
         }

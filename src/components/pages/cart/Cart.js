@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { CartContext } from "../../../context/cartContext";
-import { formatPrice } from "../../../utils/stringUtils";
 import Layout from "../../shared/Layout";
 import "./cart.styles.scss";
 import CartItem from "./CartItem";

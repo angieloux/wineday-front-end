@@ -17,3 +17,12 @@ export const getProduct = async (id) => {
     throw err;
   }
 };
+
+export const getTopRatedProducts = async () => {
+  try {
+    const response = await winedayAPI.get(`/products/top_rated_wines`);
+    return response.data;
+  } catch (err) {
+    throw err;
+  }
+};

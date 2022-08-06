@@ -74,14 +74,28 @@ export const Header = () => {
               </form>
             </li>
           )} */}
-          <li>
+          {/* <li>
             <Link to="/products?q=cabernet">Cabernet</Link>
           </li>
           <li>
             <Link to="/products?q=rhône">Rhône</Link>
-          </li>
+          </li> */}
         </ul>
       </div>
+      <ul>
+        <li>
+          <Link to="/products?q=cabernet">Cabernet</Link>
+        </li>
+        <li>
+          <Link to="/products?q=chardonnay">Chardonnay</Link>
+        </li>
+        <li>
+          <Link to="/products?q=rhône">Rhône</Link>
+        </li>
+        <li>
+          <Link to={`/products?q=new&zealand`}>New Zealand</Link>
+        </li>
+      </ul>
       <div className="account-container">
         <div className="nav-greeting">Welcome, {username || "guest"}</div>
         <CartIcon />
