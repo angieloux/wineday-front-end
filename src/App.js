@@ -15,13 +15,16 @@ import SignUpForm from "./components/sign-up/SignUpForm";
 
 const App = () => {
   const [globalStore, globalDispatch] = useReducer(globalReducer, initialState);
-
+  // const { loggedInUser, userId, username } = globalStore;
   const token = sessionStorage.getItem("jwt");
 
   useEffect(() => {
     retrieveUserFromJWT()
       .then((response) => {
-        globalDispatch({ type: "setLoggedInUser", data: response.username });
+        globalDispatch({
+          type: "setLoggedInUserId",
+          data: [response.id, response.username],
+        });
       })
       .catch((error) => console.error(error));
   }, [token]);

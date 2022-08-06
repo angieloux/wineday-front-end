@@ -27,7 +27,11 @@ export const LoginForm = (props) => {
     event.preventDefault();
     logInUser(formValues)
       .then((response) => {
-        globalDispatch({ type: "setLoggedInUser", data: response.username });
+        globalDispatch({
+          type: "setLoggedInUserId",
+          data: [response.id, response.username],
+        });
+        // globalDispatch({ type: "setLoggedInUserId", data: response.id });
         globalDispatch({ type: "setJWT", data: response.jwt });
         navigate("/");
       })

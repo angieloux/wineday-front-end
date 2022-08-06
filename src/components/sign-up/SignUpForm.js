@@ -23,7 +23,10 @@ const SignUpForm = () => {
     event.preventDefault();
     signUp(formData)
       .then((response) => {
-        globalDispatch({ type: "setLoggedInUser", data: response.username });
+        globalDispatch({
+          type: "setLoggedInUserId",
+          data: [response.id, response.username],
+        });
         globalDispatch({ type: "setJWT", data: response.jwt });
         navigate("/");
       })

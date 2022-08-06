@@ -4,11 +4,13 @@ import "./header.styles.scss";
 import CartIcon from "../cart/cart-icon/CartIcon";
 import logoIcon from "../../assets/logo.png";
 import { useGlobalState } from "../../context/globalContext";
+// import Search from "../shared/Search";
 
 export const Header = () => {
   const { globalStore, globalDispatch } = useGlobalState();
-  const { loggedInUser } = globalStore;
+  const { loggedInUser, username } = globalStore;
   const navigate = useNavigate();
+
   function handleLogout() {
     globalDispatch({ type: "removeLoggedInUser" });
     globalDispatch({ type: "removeJWT" });
@@ -39,10 +41,13 @@ export const Header = () => {
               <Link to="/auth/register">Sign Up</Link>
             </li>
           )}
+          {/* <li>
+            <Search />
+          </li> */}
         </ul>
       </div>
       <div className="account-container">
-        <div className="nav-greeting">Welcome, {loggedInUser || "guest"}</div>
+        <div className="nav-greeting">Welcome, {username || "guest"}</div>
         <CartIcon />
       </div>
     </nav>
