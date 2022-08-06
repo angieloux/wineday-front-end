@@ -1,12 +1,22 @@
 import React from "react";
-// import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { useGlobalState } from "../../../context/globalContext";
 import { createOrder } from "../../../services/orderServices";
 
 const CartTotal = ({ itemCount, total, clearCart }) => {
-  //   const navigate = useNavigate();
+  const navigate = useNavigate();
   const { globalStore } = useGlobalState();
   const { loggedInUserId } = globalStore;
+
+  const handleCheckout = (e) => {
+    const order = createOrder(loggedInUserId, total, 100);
+    if (!order) {
+      return null;
+    } else if (order) {
+      navigate("/orders");
+      clearCart();
+    }
+  };
 
   return (
     <div className="total-container">
@@ -15,12 +25,7 @@ const CartTotal = ({ itemCount, total, clearCart }) => {
         <p>Total: ${total}</p>
       </div>
       <div className="checkout">
-        <button
-          className="button is-black"
-          onClick={() => {
-            return createOrder(loggedInUserId, total, 100);
-          }}
-        >
+        <button className="button is-black" onClick={handleCheckout}>
           CHECKOUT
         </button>
 
