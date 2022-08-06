@@ -124,6 +124,20 @@ Testing has been carried out throughout all stages of the project, from developm
 
 As mentioned above, testing within the app can be tested with `yarn test` . Back end tests can be tested with `rspec`. Manual tests have also been included in the client.http file in the backend repo.
 
+## Project management (Trello)
+
+As this was a solo project, keeping track of my tasks and timelines was exceptionally important. Part B Trello screenshots can be seen below:
+
+<details>
+
+<summary style="font-weight:bold;">CLICK HERE to view wireframe screenshots for mobile</summary>
+
+![Trello screenshot 14](docs/trello-screenshots/Screen%20Shot%202022-07-17%20at%208.30.15%20am.png)
+
+</details>
+
+Note, screenshots for Part A are at the bottom of this readme.
+
 <hr>
 
 # **T3A2 (Part A) Original Documentation**
