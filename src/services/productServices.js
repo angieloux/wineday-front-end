@@ -1,29 +1,19 @@
-import products from '../data/products'
+import winedayAPI from '../config/api'
 
-export const getProducts = () => { 
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(products)
-        }, 500)
-    })
+export const getProducts = async () => { 
+    try {
+        const response = await winedayAPI.get('/products')
+        return response.data
+    } catch(err) {
+        throw err
+    }
 }
 
-export const getProduct = (id) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(products.find(product => product.id === (parseInt(id))))
-        }, 500)
-    })
+export const getProduct = async (id) => {
+    try {
+        const response = await winedayAPI.get(`/products/${id}`)
+        return response.data
+    } catch(err) {
+        throw err
+    }
 }
-
-// const getNextId = () => {
-//     const maxId = Math.max(...useResolvedPath.map(user => user.id));
-//     return maxId + 1;
-// }
-
-// export const register = (userObject) => {
-//     const newUser = {
-//         ...userObject,
-
-//     }
-// }

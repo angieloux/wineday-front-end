@@ -1,9 +1,8 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import App from './App';
+import { render, screen } from "@testing-library/react";
+import App from "./App";
 
-test('renders basic empty template', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/basic empty template/i);
-  expect(linkElement).toBeInTheDocument();
+test("renders react component", () => {
+  render(<App />);
+  const divElement = screen.getByText(/because/i);
+  expect(divElement).toBeInTheDocument();
 });
