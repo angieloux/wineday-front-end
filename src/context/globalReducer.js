@@ -34,6 +34,12 @@ const globalReducer = (state, action) => {
         jwt: null,
       };
     }
+    case "setOrders": {
+      return {
+        ...state,
+        orders: action.data,
+      };
+    }
     default:
       return state;
   }

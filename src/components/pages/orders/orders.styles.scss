@@ -1,0 +1,42 @@
+.orders-title,
+.empty-orders {
+  text-align: center;
+}
+
+.order-item {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 1rem;
+
+  //   .item-image {
+  //     img {
+  //       width: 50px;
+  //     }
+}
+
+.order-number-and-total {
+  h4 {
+    margin: 0;
+  }
+  p {
+    font-size: 1rem;
+    font-weight: normal;
+  }
+}
+
+@media (min-width: 1024px) {
+  .orders-page {
+    display: flex;
+    justify-content: center;
+  }
+  .order-item {
+    display: flex;
+    justify-content: space-between;
+    div {
+      margin: 1rem;
+    }
+    .order-number-and-total {
+      width: 200px;
+    }
+  }
+}

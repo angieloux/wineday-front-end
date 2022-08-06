@@ -28,7 +28,7 @@ export const LoginForm = (props) => {
     logInUser(formValues)
       .then((response) => {
         globalDispatch({
-          type: "setLoggedInUserId",
+          type: "setLoggedInUser",
           data: [response.id, response.username],
         });
         // globalDispatch({ type: "setLoggedInUserId", data: response.id });

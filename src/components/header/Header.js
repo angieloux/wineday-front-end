@@ -35,7 +35,14 @@ export const Header = () => {
               <Link to="/auth/login">Log In</Link>
             </li>
           )}
-          {loggedInUser && <li onClick={handleLogout}>Sign Out</li>}
+          {loggedInUser && (
+            <>
+              <li onClick={handleLogout}>Sign Out</li>
+              <li>
+                <Link to="/orders">Orders</Link>
+              </li>
+            </>
+          )}
           {!loggedInUser && (
             <li>
               <Link to="/auth/register">Sign Up</Link>

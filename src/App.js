@@ -12,6 +12,7 @@ import NotFound from "./components/NotFound";
 import Home from "./components/Home";
 import Cart from "./components/pages/cart/Cart";
 import SignUpForm from "./components/sign-up/SignUpForm";
+import OrdersList from "./components/pages/orders/OrdersList";
 
 const App = () => {
   const [globalStore, globalDispatch] = useReducer(globalReducer, initialState);
@@ -38,7 +39,7 @@ const App = () => {
             <Route path="/cart" element={<Cart />} />
             <Route path="/products" element={<AllProducts />} />
             <Route path="/products/:id" element={<SingleProduct />} />
-
+            <Route path="/orders" element={<OrdersList />} />
             <Route path="/auth/login" element={<LoginForm />} />
             <Route path="/auth/register" element={<SignUpForm />} />
             <Route path="/auth/logout" />

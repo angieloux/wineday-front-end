@@ -24,7 +24,7 @@ const SignUpForm = () => {
     signUp(formData)
       .then((response) => {
         globalDispatch({
-          type: "setLoggedInUserId",
+          type: "setLoggedInUser",
           data: [response.id, response.username],
         });
         globalDispatch({ type: "setJWT", data: response.jwt });

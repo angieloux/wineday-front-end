@@ -12,7 +12,6 @@ const ProductPreview = (props) => {
   const navigate = useNavigate();
   const { addItem, cartItems, addMore } = useContext(CartContext);
   const itemInCart = inCart(product, cartItems);
-  console.log(cartItems);
 
   return (
     <div className="product-preview">
