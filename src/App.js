@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import AllProducts from "./components/pages/all-products/AllProducts";
 import SingleProduct from "./components/pages/single-product/SingleProduct";
 import { LoginForm } from "./components/log-in/LoginForm";
@@ -34,24 +34,22 @@ const App = () => {
 
   return (
     <>
-      <GlobalContext.Provider value={{ globalStore, globalDispatch }}>
-        <CartContextProvider>
-          <BrowserRouter>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/cart" element={<Cart />} />
-              <Route path="/products" element={<AllProducts />} />
-              <Route path="/products/:id" element={<SingleProduct />} />
-              <Route path="/orders" element={<OrdersList />} />
-              <Route path="/orders/:id" element={<OrderConfirmation />} />
-              <Route path="/auth/login" element={<LoginForm />} />
-              <Route path="/auth/register" element={<SignUpForm />} />
-              <Route path="/auth/logout" />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </BrowserRouter>
-        </CartContextProvider>
-      </GlobalContext.Provider>
+      <CartContextProvider>
+        <GlobalContext.Provider value={{ globalStore, globalDispatch }}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/products" element={<AllProducts />} />
+            <Route path="/products/:id" element={<SingleProduct />} />
+            <Route path="/orders" element={<OrdersList />} />
+            <Route path="/orders/:id" element={<OrderConfirmation />} />
+            <Route path="/auth/login" element={<LoginForm />} />
+            <Route path="/auth/register" element={<SignUpForm />} />
+            <Route path="/auth/logout" />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </GlobalContext.Provider>
+      </CartContextProvider>
     </>
   );
 };

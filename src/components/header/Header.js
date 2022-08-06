@@ -13,13 +13,6 @@ export const Header = () => {
   const { username } = globalStore;
   const navigate = useNavigate();
 
-  // function handleChange(e) {}
-
-  function handleSearch(e) {
-    e.preventdefault();
-    console.log(e.target.name);
-  }
-
   function handleLogout() {
     globalDispatch({ type: "removeLoggedInUser" });
     globalDispatch({ type: "removeJWT" });
@@ -40,9 +33,7 @@ export const Header = () => {
           <li>
             <Link to="/products">Shop</Link>
           </li>
-          <li>
-            <Link to="/products?q=red">Red</Link>
-          </li>
+
           {!username && (
             <li>
               <Link to="/auth/login">Log In</Link>
@@ -61,18 +52,33 @@ export const Header = () => {
               <Link to="/auth/register">Sign Up</Link>
             </li>
           )}
+
+          {/* {window.location.pathname.startsWith("/products") && (
+            <li>
+              <form className="search-form" onSubmit={handleSearch}>
+                <div className="control">
+                  <input
+                    // name="q"
+                    type="input"
+                    placeholder="Search..."
+                    className="nomad-btn submit is-black"
+                  ></input>
+                </div>
+
+                <button
+                  className="button is-small button nomad-btn submit"
+                  type="submit"
+                >
+                  🔎
+                </button>
+              </form>
+            </li>
+          )} */}
           <li>
-            <form onSubmit={handleSearch}>
-              <input
-                name="q"
-                type="text"
-                placeholder="Search..."
-                className="search-box"
-              ></input>
-              <button className="search-button" type="submit">
-                🔎
-              </button>
-            </form>
+            <Link to="/products?q=cabernet">Cabernet</Link>
+          </li>
+          <li>
+            <Link to="/products?q=rhône">Rhône</Link>
           </li>
         </ul>
       </div>

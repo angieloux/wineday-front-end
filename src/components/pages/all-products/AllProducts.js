@@ -15,10 +15,15 @@ const AllProducts = () => {
   ));
   let [searchParams] = useSearchParams();
 
+  function handleSearch(e) {
+    e.preventdefault();
+  }
+
   useEffect(() => {
     setLoading(true);
 
     const search = searchParams.get("q");
+
     getProducts()
       .then((products) => {
         if (search) {
@@ -35,10 +40,30 @@ const AllProducts = () => {
       })
       .catch((error) => console.error(error))
       .finally(() => setLoading(false));
-  }, [globalDispatch, searchParams]);
+  }, [searchParams, globalDispatch]);
   return (
     <Layout>
       <div className="products-list-container">
+        <div className="form-container">
+          <form className="search-form" onSubmit={handleSearch}>
+            <div className="control">
+              <input
+                name="q"
+                type="input"
+                placeholder="Search..."
+                className="nomad-btn submit is-black"
+              ></input>
+            </div>
+
+            <button
+              className="button is-black button nomad-btn submit"
+              type="submit"
+            >
+              🔎
+            </button>
+          </form>
+        </div>
+
         {loading && <div className="products-list-title">Loading wines...</div>}
         {!loading && (
           <>

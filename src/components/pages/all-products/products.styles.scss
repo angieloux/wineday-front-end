@@ -27,3 +27,21 @@
     }
   }
 }
+.form-container {
+  display: flex;
+  justify-content: center;
+  margin-left: 0;
+}
+.search-form {
+  justify-content: center;
+  display: flex;
+  width: auto;
+  height: 120%;
+  margin-bottom: -10px;
+  .button {
+    width: 40px;
+
+    font-size: 1rem;
+    padding: 0;
+  }
+}
