@@ -105,8 +105,8 @@ const SingleProduct = (props) => {
             <div className="product-description">
               <h3>{variety}</h3>
               <h4>Points: {points}</h4>
-              <p>{description}</p>
-              <p>
+              <p className="description">{description}</p>
+              <p className="location">
                 📍 {winery}, {province}, {region}, {country}.
               </p>
             </div>
