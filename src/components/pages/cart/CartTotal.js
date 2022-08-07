@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import { parseError } from "../../../config/api";
 import { useGlobalState } from "../../../context/globalContext";
 import { createOrder } from "../../../services/orderServices";
 import { formatPrice } from "../../../utils/stringUtils";
@@ -8,19 +9,25 @@ import { formatPrice } from "../../../utils/stringUtils";
 const CartTotal = ({ itemCount, total, clearCart }) => {
   const navigate = useNavigate();
   const { globalStore } = useGlobalState();
+  const [loading, setLoading] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const { userId } = globalStore;
+  console.log(total);
 
   const handleCheckout = (e) => {
-    createOrder(userId, total, 100)
+    setLoading(true);
+    createOrder(userId, total)
       .then((order) => {
         if (order) {
           clearCart();
           navigate("/orders");
-        } else if (!order) return null;
+        }
       })
-      .catch((err) => {
-        console.error(err);
-      });
+      .catch((error) => {
+        const message = parseError(error);
+        setErrorMessage(message);
+      })
+      .finally(() => setLoading(false));
 
     // if (!order) {
     //   return null;
@@ -56,6 +63,10 @@ const CartTotal = ({ itemCount, total, clearCart }) => {
         <button className="button is-white" onClick={() => clearCart()}>
           CLEAR CART
         </button>
+      </div>
+      {loading && <p>Processing your order..</p>}
+      <div className="error-message">
+        {errorMessage && <p>{errorMessage} </p>}
       </div>
     </div>
   );

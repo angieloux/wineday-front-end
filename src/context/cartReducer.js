@@ -31,10 +31,13 @@ const cartReducer = (state, action) => {
 
     case "ADD_MORE":
       // find the item to increase
-      const itemToIncrease = state.cartItems.findIndex(
+      console.log(state.cartItems);
+
+      const increaseIndex = state.cartItems.findIndex(
         (item) => item.id === action.payload.id
       );
-      state.cartItems[itemToIncrease].quantity++;
+      state.cartItems[increaseIndex].quantity++;
+
       return {
         ...state,
         cartItems: [...state.cartItems],

@@ -5,8 +5,10 @@ import { logInUser } from "../../services/userServices";
 import { parseError } from "../../config/api";
 import "./login.styles.scss";
 import Layout from "../shared/Layout";
+import { Heading, Form } from "react-bulma-components";
 
 export const LoginForm = (props) => {
+  const { Field, Label, Input } = Form;
   const initialValues = {
     login: "",
     password: "",
@@ -15,6 +17,7 @@ export const LoginForm = (props) => {
   const { globalDispatch } = useGlobalState();
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   function handleChange(event) {
     setFormValues({
@@ -24,6 +27,8 @@ export const LoginForm = (props) => {
   }
 
   function handleSubmit(event) {
+    setErrorMessage("");
+    setLoading(true);
     event.preventDefault();
     logInUser(formValues)
       .then((response) => {
@@ -31,60 +36,52 @@ export const LoginForm = (props) => {
           type: "setLoggedInUser",
           data: [response.id, response.username],
         });
-        // globalDispatch({ type: "setLoggedInUserId", data: response.id });
         globalDispatch({ type: "setJWT", data: response.jwt });
         navigate("/");
       })
       .catch((error) => {
         const message = parseError(error);
         setErrorMessage(message);
-        console.log(message);
-      });
+      })
+      .finally(() => setLoading(false));
   }
   return (
     <Layout>
-      <div className="log-in">
-        <h1>Sign In</h1>
-        <div className="form-container">
-          <form id="loginForm" onSubmit={handleSubmit}>
-            <div>
-              <input
-                type="text"
-                variant="filled"
-                name="login"
-                placeholder="email or username"
-                value={formValues.login}
-                onChange={handleChange}
-                className={"nomad-input email"}
-              />
-            </div>
+      <Heading align="center">Sign In</Heading>
 
-            <div>
-              <input
-                type="password"
-                variant="filled"
-                name="password"
-                placeholder="password"
-                value={formValues.password}
-                onChange={handleChange}
-                className={"nomad-input password"}
-              />
-            </div>
+      <Field>
+        <form id="loginForm" onSubmit={handleSubmit}>
+          <Label for="username">Username or email</Label>
+          <Input
+            type="text"
+            name="login"
+            placeholder="email or username"
+            value={formValues.login}
+            onChange={handleChange}
+            className={"nomad-input email"}
+          />
 
-            <div className="submit-btn">
-              <button
-                type="submit"
-                className="button is-black nomad-btn submit"
-              >
-                Login
-              </button>
-            </div>
-            <div className="error-message">
-              {errorMessage && <p className="error">{errorMessage}</p>}
-            </div>
-          </form>
-        </div>
-      </div>
+          <Label for="password">Password</Label>
+          <Input
+            type="password"
+            name="password"
+            placeholder="password"
+            value={formValues.password}
+            onChange={handleChange}
+            className={"nomad-input password"}
+          />
+
+          <div className="submit-btn">
+            <button type="submit" className="button is-black nomad-btn submit">
+              Login
+            </button>
+          </div>
+          {loading && <p>Checking your details..</p>}
+          <div className="error-message">
+            {errorMessage && <p>{errorMessage} </p>}
+          </div>
+        </form>
+      </Field>
     </Layout>
   );
 };

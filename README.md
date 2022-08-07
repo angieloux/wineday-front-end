@@ -57,11 +57,11 @@ With NPM:
 
 # Updated project details
 
-Due to time constraints the web app has deviated slightly from the original planning documentation as set out in the docs repo. Whilst most features are implemented, the scope of these will be significantly expanded in the coming weeks. These changes are listed below:
+Due to time constraints the web app has deviated slightly from the original planning documentation as set out in the docs repo. Whilst most features are implemented and are all functional, the scope of the app will be significantly expanded in future versions. These changes are listed below:
 
 ### Searching/filtering
 
-While a user can indeed search for a wine by any keyword and they will populate, the search functionality is not as robust as it will be in future versions. There are currently only two filter buttons available as well (Cabernet and Rhone).
+Currently a user can search for any keyword ('cherry' or 'red', etc) and it will locate the corresponding wines within the database. They can also search by the top nav, which has two dropdowns: By variety and By region. In future version of the app, a high-scoring filter will be added, and those wines will be featured on the landing page.
 
 ### User management
 
@@ -69,7 +69,11 @@ As mentioned in the original planning phase, an admin role was never considered 
 
 ### Checkout process
 
-The checkout process right now is a mockup of what is to come, as Stripe will be implemented as the payments platform. After searching/filtering is implemented, this will be done.
+The checkout process right now is a mockup of what is to come, as Stripe will be implemented as the payments platform. This will also incorporate a formal Order Confirmation page once an order has been placed.
+
+### Stylistic differences
+
+The original wireframes show features like breadcrumbs & toasts (for when a customer adds something to the cart). As mentioned in the original planning, an About Page was also not part of the MVP. These sprinkle features will ideally come next.
 
 # Dependencies
 
@@ -77,16 +81,15 @@ The checkout process right now is a mockup of what is to come, as Stripe will be
 
 ##### Key React Dependencies
 
-| Dependency        | Version | use                                                                                               |
-| ----------------- | ------- | ------------------------------------------------------------------------------------------------- |
-| react-router      | 6.3.0   | Routing                                                                                           |
-| react-scripts     | 5.0.1   | Run the build tools required to transform React JSX syntax into plain JavaScript programmatically |
-| axios             | 0.27.2  | HTTP requests from node.js or XMLHttpRequests from the browser                                    |
-| bulma             | 0.9.4   | Styling                                                                                           |
-| styled-components | 5.3.5   | Styling                                                                                           |
-| stripe\*          | 10.0.0  | Payments                                                                                          |
-
-\*(in development)
+| Dependency             | Version | Use                                                                                               |
+| ---------------------- | ------- | ------------------------------------------------------------------------------------------------- |
+| react-router           | 6.3.0   | Routing                                                                                           |
+| react-scripts          | 5.0.1   | Run the build tools required to transform React JSX syntax into plain JavaScript programmatically |
+| axios                  | 0.27.2  | HTTP requests from node.js or XMLHttpRequests from the browser                                    |
+| node-sass              | 7.0.1   | Binding for node.js to Sass                                                                       |
+| bulma                  | 0.9.4   | Styling                                                                                           |
+| react-bulma-components | 4.1.0   | Styling with ready-made Bulma React components                                                    |
+| styled-components      | 5.3.5   | Styling                                                                                           |
 
 - ECMAScript 2020 (ES11)
 - Hosted on Netlify (front-end)
@@ -122,7 +125,7 @@ The checkout process right now is a mockup of what is to come, as Stripe will be
 
 Testing has been carried out throughout all stages of the project, from development through to production. A testing spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vTbDicEG5nChHB6cVBtfCqUXtTXXtG7mIQkaQ5SaVdKJujoLzqwBdMsFHrW3Xwj4msacdTLbfFt1of1/pubhtml#). A pdf version of all pages are also saved within the docs/user_testing section of this repo.
 
-As mentioned above, testing within the app can be tested with `yarn test` . Back end tests can be tested with `rspec`. Manual tests have also been included in the client.http file in the backend repo.
+As mentioned above, testing within the app can be tested with `yarn test` . Back end tests can be tested with `rspec`. Manual tests have also been included in the `client.http` file in the [root folder of the backend repo](https://github.com/angieloux/wineday-back-end/blob/main/client.http).
 
 ## Project management (Trello)
 
@@ -132,11 +135,36 @@ As this was a solo project, keeping track of my tasks and timelines was exceptio
 
 <summary style="font-weight:bold;">CLICK HERE to view wireframe screenshots for mobile</summary>
 
-![Trello screenshot 14](docs/trello-screenshots/Screen%20Shot%202022-07-17%20at%208.30.15%20am.png)
+![Trello screenshot 14](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-23%20at%204.37.26%20pm.png)
+![Trello screenshot 15](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-23%20at%208.56.51%20pm.png)
+![Trello screenshot 16](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-23%20at%208.57.04%20pm.png)
+![Trello screenshot 17](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-24%20at%2011.46.47%20am.png)
+![Trello screenshot 18](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-25%20at%204.41.10%20pm.png)
+![Trello screenshot 19](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-27%20at%203.47.18%20pm.png)
+![Trello screenshot 20](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-27%20at%208.49.55%20pm.png)
+![Trello screenshot 21](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-28%20at%206.46.42%20pm.png)
+![Trello screenshot 22](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-28%20at%206.46.42%20pm.png)
+![Trello screenshot 23](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-29%20at%2010.10.56%20pm.png)
+![Trello screenshot 24](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-30%20at%2012.12.59%20am.png)
+![Trello screenshot 25](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-30%20at%2012.44.41%20pm.png)
+![Trello screenshot 26](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-30%20at%203.36.04%20pm.png)
+![Trello screenshot 27](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-30%20at%204.12.26%20pm.png)
+![Trello screenshot 28](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-31%20at%206.39.08%20pm.png)
+![Trello screenshot 29](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-31%20at%206.59.42%20pm.png)
+![Trello screenshot 30](docs/trello-screenshots/part_b/Screen%20Shot%202022-08-04%20at%201.31.09%20am.png)
+![Trello screenshot 31](docs/trello-screenshots/part_b/Screen%20Shot%202022-08-04%20at%205.35.59%20pm.png)
+![Trello screenshot 32](docs/trello-screenshots/part_b/Screen%20Shot%202022-08-04%20at%201.31.09%20am.png)
+![Trello screenshot 33](docs/trello-screenshots/part_b/Screen%20Shot%202022-08-04%20at%205.35.59%20pm.png)
+![Trello screenshot 34](docs/trello-screenshots/part_b/Screen%20Shot%202022-08-06%20at%206.33.56%20pm.png)
+![Trello screenshot 35](docs/trello-screenshots/part_b/Screen%20Shot%202022-08-06%20at%206.35.53%20pm.png)
+![Trello screenshot 36](docs/trello-screenshots/part_b/Screen%20Shot%202022-08-06%20at%206.36.06%20pm.png)
+![Trello screenshot 37](docs/trello-screenshots/part_b/Screen%20Shot%202022-08-06%20at%208.00.55%20pm.png)
+![Trello screenshot 38](docs/trello-screenshots/part_b/Screen%20Shot%202022-08-06%20at%208.01.10%20pm.png)
+![Trello screenshot 39](docs/trello-screenshots/part_b/Screen%20Shot%202022-08-06%20at%208.01.19%20pm.png)
 
 </details>
 
-Note, screenshots for Part A are at the bottom of this readme.
+Screenshots for Part A are at the bottom of this readme.
 
 <hr>
 
@@ -354,16 +382,16 @@ A demonstration of how a user will interact with the application is available fo
 
 Trello has been used to manage project tasks and progression. Below are a variety of screenshots that depict the initial documentation and planning portion of this app's development. The Trello workspace can be found [here](https://trello.com/b/7TaAyqk8/t3a2).
 
-![Trello screenshot 1](docs/trello-screenshots/Screen%20Shot%202022-07-01%20at%201.52.28%20pm.png)
-![Trello screenshot 2](docs/trello-screenshots/Screen%20Shot%202022-07-05%20at%204.22.15%20pm.png)
-![Trello screenshot 3](docs/trello-screenshots/Screen%20Shot%202022-07-06%20at%201.30.43%20pm.png)
-![Trello screenshot 4](docs/trello-screenshots/Screen%20Shot%202022-07-06%20at%205.02.47%20pm.png)
-![Trello screenshot 5](docs/trello-screenshots/Screen%20Shot%202022-07-06%20at%205.36.51%20pm.png)
-![Trello screenshot 6](docs/trello-screenshots/Screen%20Shot%202022-07-06%20at%209.34.33%20pm.png)
-![Trello screenshot 7](docs/trello-screenshots/Screen%20Shot%202022-07-06%20at%209.35.48%20pm.png)
-![Trello screenshot 8](docs/trello-screenshots/Screen%20Shot%202022-07-06%20at%209.37.00%20pm.png)
-![Trello screenshot 9](docs/trello-screenshots/Screen%20Shot%202022-07-07%20at%2012.12.41%20am.png)
-![Trello screenshot 10](docs/trello-screenshots/Screen%20Shot%202022-07-07%20at%2012.12.46%20am.png)
-![Trello screenshot 11](docs/trello-screenshots/Screen%20Shot%202022-07-07%20at%2012.13.45%20am.png)
-![Trello screenshot 12](docs/trello-screenshots/Screen%20Shot%202022-07-07%20at%2012.13.53%20am.png)
-![Trello screenshot 13](docs/trello-screenshots/Screen%20Shot%202022-07-17%20at%208.30.15%20am.png)
+![Trello screenshot 1](docs/trello-screenshots/part_a/Screen%20Shot%202022-07-01%20at%201.52.28%20pm.png)
+![Trello screenshot 2](docs/trello-screenshots/part_a/Screen%20Shot%202022-07-05%20at%204.22.15%20pm.png)
+![Trello screenshot 3](docs/trello-screenshots/part_a/Screen%20Shot%202022-07-06%20at%201.30.43%20pm.png)
+![Trello screenshot 4](docs/trello-screenshots/part_a/Screen%20Shot%202022-07-06%20at%205.02.47%20pm.png)
+![Trello screenshot 5](docs/trello-screenshots/part_a/Screen%20Shot%202022-07-06%20at%205.36.51%20pm.png)
+![Trello screenshot 6](docs/trello-screenshots/part_a/Screen%20Shot%202022-07-06%20at%209.34.33%20pm.png)
+![Trello screenshot 7](docs/trello-screenshots/part_a/Screen%20Shot%202022-07-06%20at%209.35.48%20pm.png)
+![Trello screenshot 8](docs/trello-screenshots/part_a/Screen%20Shot%202022-07-06%20at%209.37.00%20pm.png)
+![Trello screenshot 9](docs/trello-screenshots/part_a/Screen%20Shot%202022-07-07%20at%2012.12.41%20am.png)
+![Trello screenshot 10](docs/trello-screenshots/part_a/Screen%20Shot%202022-07-07%20at%2012.12.46%20am.png)
+![Trello screenshot 11](docs/trello-screenshots/part_a/Screen%20Shot%202022-07-07%20at%2012.13.45%20am.png)
+![Trello screenshot 12](docs/trello-screenshots/part_a/Screen%20Shot%202022-07-07%20at%2012.13.53%20am.png)
+![Trello screenshot 13](docs/trello-screenshots/part_a/Screen%20Shot%202022-07-17%20at%208.30.15%20am.png)

@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import AllProducts from "./components/pages/all-products/AllProducts";
 import SingleProduct from "./components/pages/single-product/SingleProduct";
 import { LoginForm } from "./components/log-in/LoginForm";
@@ -14,7 +14,6 @@ import Cart from "./components/pages/cart/Cart";
 import SignUpForm from "./components/sign-up/SignUpForm";
 import OrdersList from "./components/pages/orders/OrdersList";
 import OrderConfirmation from "./components/pages/orders/OrderConfirmation";
-import CartContextProvider from "./context/cartContext";
 
 const App = () => {
   const [globalStore, globalDispatch] = useReducer(globalReducer, initialState);
@@ -34,8 +33,8 @@ const App = () => {
 
   return (
     <>
-      <CartContextProvider>
-        <GlobalContext.Provider value={{ globalStore, globalDispatch }}>
+      <GlobalContext.Provider value={{ globalStore, globalDispatch }}>
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
@@ -48,8 +47,8 @@ const App = () => {
             <Route path="/auth/logout" />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </GlobalContext.Provider>
-      </CartContextProvider>
+        </BrowserRouter>
+      </GlobalContext.Provider>
     </>
   );
 };
