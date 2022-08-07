@@ -26,10 +26,10 @@ const SingleProduct = (props) => {
 
   useEffect(() => {
     setLoading(true);
+    if (id > 28) navigate("/NotFound");
     getProduct(id)
       .then((product) => {
         globalDispatch({ type: `setProduct`, data: product });
-        // setProduct(product);
       })
       .catch((error) => {
         console.error(error);
