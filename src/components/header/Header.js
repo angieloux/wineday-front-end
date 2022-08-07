@@ -93,7 +93,7 @@ export const Header = () => {
           <Link to="/products?q=rhône">Rhône</Link>
         </li>
         <li>
-          <Link to={`/products?q=new&zealand`}>New Zealand</Link>
+          <Link to={`/products?q=italy`}>Italian</Link>
         </li>
       </ul>
       <div className="account-container">

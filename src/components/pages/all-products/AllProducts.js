@@ -75,11 +75,14 @@ const AllProducts = () => {
         </div>
 
         {loading && <div className="products-list-title">Loading wines...</div>}
-        {!loading && (
+        {!loading && products.length > 0 && (
           <>
             <div className="products-list-title">Browse our cellar</div>
             <div className="products-list">{allProducts}</div>
           </>
+        )}
+        {!loading && products.length === 0 && (
+          <p>Oops, nothing found. Try searching for something else.</p>
         )}
       </div>
     </Layout>
