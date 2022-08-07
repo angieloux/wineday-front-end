@@ -60,7 +60,12 @@ const Nav = () => {
             <Item href="/auth/register">Sign up</Item>
           </>
         )}
-        {username && <Item onClick={handleLogout}>Signout</Item>}
+        {username && (
+          <>
+            <Item href="/orders">Orders</Item>
+            <Item onClick={handleLogout}>Signout</Item>
+          </>
+        )}
 
         <Item>Welcome, {username || "guest"}</Item>
         <CartIcon />
