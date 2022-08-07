@@ -5,7 +5,6 @@ import CartIcon from "../cart/cart-icon/CartIcon";
 import logoIcon from "../../assets/logo.png";
 import { useGlobalState } from "../../context/globalContext";
 import { CartContext } from "../../context/cartContext";
-// import Search from "../shared/Search";
 
 export const Header = () => {
   const { globalStore, globalDispatch } = useGlobalState();
@@ -52,34 +51,6 @@ export const Header = () => {
               <Link to="/auth/register">Sign Up</Link>
             </li>
           )}
-
-          {/* {window.location.pathname.startsWith("/products") && (
-            <li>
-              <form className="search-form" onSubmit={handleSearch}>
-                <div className="control">
-                  <input
-                    // name="q"
-                    type="input"
-                    placeholder="Search..."
-                    className="nomad-btn submit is-black"
-                  ></input>
-                </div>
-
-                <button
-                  className="button is-small button nomad-btn submit"
-                  type="submit"
-                >
-                  🔎
-                </button>
-              </form>
-            </li>
-          )} */}
-          {/* <li>
-            <Link to="/products?q=cabernet">Cabernet</Link>
-          </li>
-          <li>
-            <Link to="/products?q=rhône">Rhône</Link>
-          </li> */}
         </ul>
       </div>
       <ul>
@@ -93,7 +64,7 @@ export const Header = () => {
           <Link to="/products?q=rhône">Rhône</Link>
         </li>
         <li>
-          <Link to={`/products?q=italy`}>Italian</Link>
+          <Link to={`/products?q=italy`}>Italy</Link>
         </li>
       </ul>
       <div className="account-container">
