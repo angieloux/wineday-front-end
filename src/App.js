@@ -34,8 +34,8 @@ const App = () => {
 
   return (
     <>
-      <CartContextProvider>
-        <GlobalContext.Provider value={{ globalStore, globalDispatch }}>
+      <GlobalContext.Provider value={{ globalStore, globalDispatch }}>
+        <CartContextProvider>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
@@ -48,8 +48,8 @@ const App = () => {
             <Route path="/auth/logout" />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </GlobalContext.Provider>
-      </CartContextProvider>
+        </CartContextProvider>
+      </GlobalContext.Provider>
     </>
   );
 };
