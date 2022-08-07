@@ -50,7 +50,7 @@ const SingleProduct = (props) => {
   } = product;
   return (
     <Layout>
-      {loading && <h2>Loading...</h2>}
+      {loading && <p className="loading-single-product">Loading...</p>}
 
       {!loading && product && (
         <div className="single-product-container">

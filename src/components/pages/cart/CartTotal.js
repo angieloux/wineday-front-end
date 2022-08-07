@@ -4,7 +4,6 @@ import { parseError } from "../../../config/api";
 import { useGlobalState } from "../../../context/globalContext";
 import { createOrder } from "../../../services/orderServices";
 import { formatPrice } from "../../../utils/stringUtils";
-// import OrderConfirmation from "../orders/OrderConfirmation";
 
 const CartTotal = ({ itemCount, total, clearCart }) => {
   const navigate = useNavigate();
@@ -28,14 +27,6 @@ const CartTotal = ({ itemCount, total, clearCart }) => {
         setErrorMessage(message);
       })
       .finally(() => setLoading(false));
-
-    // if (!order) {
-    //   return null;
-    // } else if (order) {
-    //   clearCart();
-    //   globalDispatch({ type: "setFinalisedOrder", data: order });
-    //   console.log(order);
-    // }
   };
 
   return (

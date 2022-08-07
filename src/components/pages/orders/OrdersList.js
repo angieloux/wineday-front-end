@@ -31,7 +31,7 @@ const OrdersList = () => {
         {!loading && orders.length === 0 && (
           <div className="empty-orders">Your orders are empty</div>
         )}
-        {loading && <p> loading</p>}
+        {loading && <p className="order-loading"> Loading...</p>}
         {!loading && orders.length > 0 && (
           <div className="orders-page">
             <div className="order-item-container">{allOrders}</div>

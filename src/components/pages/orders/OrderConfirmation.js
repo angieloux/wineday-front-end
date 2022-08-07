@@ -20,7 +20,7 @@ const OrderConfirmation = (props) => {
   }, [id]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p align="center">Loading...</p>;
   }
 
   if (!loading && !order) {
