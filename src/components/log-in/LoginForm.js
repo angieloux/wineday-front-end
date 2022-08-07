@@ -42,7 +42,6 @@ export const LoginForm = (props) => {
       .catch((error) => {
         const message = parseError(error);
         setErrorMessage(message);
-        console.log(message);
       })
       .finally(() => setLoading(false));
   }

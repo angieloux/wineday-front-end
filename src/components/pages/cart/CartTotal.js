@@ -9,9 +9,10 @@ const CartTotal = ({ itemCount, total, clearCart }) => {
   const navigate = useNavigate();
   const { globalStore } = useGlobalState();
   const { userId } = globalStore;
+  console.log(total);
 
   const handleCheckout = (e) => {
-    createOrder(userId, total, 100)
+    createOrder(userId, total)
       .then((order) => {
         if (order) {
           clearCart();

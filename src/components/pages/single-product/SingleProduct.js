@@ -10,9 +10,14 @@ import { useGlobalState } from "../../../context/globalContext";
 import { formatPrice } from "../../../utils/stringUtils";
 
 const SingleProduct = (props) => {
-  const { id } = useParams();
   const { globalStore, globalDispatch } = useGlobalState();
   const { username, product } = globalStore;
+  // const { globalStore } = useGlobalState();
+  // const { username } = globalStore;
+  // console.log(products);
+  const { id } = useParams();
+
+  // const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(false);
   const { cartItems, addItem, addMore } = useContext(CartContext);
   const navigate = useNavigate();
@@ -24,6 +29,7 @@ const SingleProduct = (props) => {
     getProduct(id)
       .then((product) => {
         globalDispatch({ type: `setProduct`, data: product });
+        // setProduct(product);
       })
       .catch((error) => {
         console.error(error);
@@ -31,13 +37,6 @@ const SingleProduct = (props) => {
       .finally(() => setLoading(false));
   }, [id, globalDispatch]);
 
-  // if (loading) {
-  //   return <p>Loading...</p>;
-  // }
-
-  // if (!loading && !product) {
-  //   return <p>NAH</p>;
-  // }
   const {
     title,
     variety,
@@ -49,7 +48,6 @@ const SingleProduct = (props) => {
     country,
     points,
   } = product;
-
   return (
     <Layout>
       {loading && <h2>Loading...</h2>}

@@ -15,7 +15,7 @@ const OrderConfirmation = (props) => {
   useEffect(() => {
     getOrder(id)
       .then((order) => setOrder(order))
-      .catch((err) => console.log(err))
+      .catch((err) => console.error(err))
       .finally(setLoading(false));
   }, [id]);
 
