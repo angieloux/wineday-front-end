@@ -8,16 +8,7 @@ import { useNavigate } from "react-router";
 import { Card, Heading } from "react-bulma-components";
 
 const ProductPreview = (props) => {
-  const {
-    Image,
-    Content,
-    Header,
-    Footer,
-    Title,
-    HeaderIcon,
-    FooterItem,
-    CardContent,
-  } = Card;
+  const { Image } = Card;
   const { id, title, price, points, variety, description } = props;
   const navigate = useNavigate();
   const product = { title, price, points, variety, description, id };
@@ -25,45 +16,41 @@ const ProductPreview = (props) => {
   const itemInCart = inCart(product, cartItems);
 
   return (
-    <Card>
+    <Card className="product-preview">
       <Image
+        className="product-image"
         src={image}
         alt={title}
         onClick={() => navigate(`/products/${id}`)}
       ></Image>
-      <Card.Content>
-        {/* <div className="product-short-info"> */}
-        <Heading size={4}>
-          <h3>{title}</h3>
-        </Heading>
+
+      <div className="product-short-info">
+        <Heading size={4}>{title}</Heading>
 
         <Heading subtitle weight="bold">
           <p>{formatPrice(price)}</p>
         </Heading>
-        <span>{truncate(description, 100)}</span>
+        <span>{truncate(description, 70)}</span>
         <p className="bold-text">{variety}</p>
-        <p classname="score">Score: {points}</p>
-      </Card.Content>
-      {/* </div> */}
-      <Footer>
-        {!itemInCart ? (
-          <button
-            className="button is-black nomad-btn"
-            onClick={() => addItem(product)}
-          >
-            ADD TO CART
-          </button>
-        ) : (
-          <button
-            className="button is-white nomad-btn"
-            id="btn-white-outline"
-            onClick={() => addMore(product)}
-          >
-            ADD MORE
-          </button>
-        )}
-        {/* </Card.Content> */}
-      </Footer>
+        <p className="score">Score: {points}</p>
+      </div>
+
+      {!itemInCart ? (
+        <button
+          className="button is-black nomad-btn"
+          onClick={() => addItem(product)}
+        >
+          ADD TO CART
+        </button>
+      ) : (
+        <button
+          className="button is-white nomad-btn"
+          id="btn-white-outline"
+          onClick={() => addMore(product)}
+        >
+          ADD MORE
+        </button>
+      )}
     </Card>
   );
 };

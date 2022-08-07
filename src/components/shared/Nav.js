@@ -30,13 +30,13 @@ const Nav = () => {
         </Item>
         <Burger />
       </Brand>
-      <Menu>
+      <Menu className="is-active">
         <Container>
           <Item href="/products">Shop our range</Item>
         </Container>
         <Item hoverable href="#">
           <Link>By variety</Link>
-          <Dropdown>
+          <Dropdown className="is-hoverable">
             <Item href="/products?q=cabernet">Cabernet</Item>
             <Item href="/products?q=pinot">Pinot Noir</Item>
             <Item href="/products?q=rhone">Rhone</Item>
@@ -67,7 +67,7 @@ const Nav = () => {
           </>
         )}
 
-        <Item>Welcome, {username || "guest"}</Item>
+        <Item>Welcome, {username || "guest"} 🍷</Item>
         <CartIcon />
       </Menu>
     </Navbar>

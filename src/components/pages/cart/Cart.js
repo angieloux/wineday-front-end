@@ -4,6 +4,7 @@ import Layout from "../../shared/Layout";
 import "./cart.styles.scss";
 import CartItem from "./CartItem";
 import CartTotal from "./CartTotal";
+import { Heading } from "react-bulma-components";
 
 const Cart = () => {
   const {
@@ -20,7 +21,7 @@ const Cart = () => {
   return (
     <Layout>
       <>
-        <h1 className="cart-title">Cart</h1>
+        <Heading align="center">Cart</Heading>
         {cartItems.length === 0 ? (
           <div className="empty-cart">Your cart is empty</div>
         ) : (
