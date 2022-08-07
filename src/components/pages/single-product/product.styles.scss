@@ -19,9 +19,17 @@
     height: 50%;
   }
 
+  .loading-single-product {
+    text-align: center;
+  }
+
   .product-details {
     .product-name-and-price {
       margin: 1rem 0;
+    }
+    h1 {
+      font-size: 1.7rem;
+      font-weight: bold;
     }
 
     .add-to-cart-btns {
@@ -32,10 +40,24 @@
       p {
         line-height: 1.5;
       }
-      h4 {
-        font-style: italic;
-        font-weight: 100;
+      h4,
+      h3 {
+        font-style: bold;
+        font-weight: 500;
+      }
+      h3 {
+        font-size: 1.75rem;
+      }
+      .description {
+        margin-top: 1rem;
       }
     }
   }
+}
+.location {
+  margin-top: 1rem;
+}
+.bold-text {
+  margin-top: 1.5rem;
+  font-weight: bold;
 }

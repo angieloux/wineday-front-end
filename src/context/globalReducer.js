@@ -6,6 +6,12 @@ const globalReducer = (state, action) => {
         products: action.data,
       };
     }
+    case "setProduct": {
+      return {
+        ...state,
+        product: action.data,
+      };
+    }
     case "setLoggedInUser": {
       return {
         ...state,

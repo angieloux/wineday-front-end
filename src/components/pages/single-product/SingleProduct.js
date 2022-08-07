@@ -7,31 +7,35 @@ import image from "../../../assets/product.jpg";
 import { inCart } from "../../../utils/helpers";
 import { CartContext } from "../../../context/cartContext";
 import { useGlobalState } from "../../../context/globalContext";
+import { formatPrice } from "../../../utils/stringUtils";
 
 const SingleProduct = (props) => {
-  const { globalStore } = useGlobalState();
-  const { username } = globalStore;
-  const [product, setProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const { globalStore, globalDispatch } = useGlobalState();
+  const { username, product } = globalStore;
+  // const { globalStore } = useGlobalState();
+  // const { username } = globalStore;
+  // console.log(products);
+  const { id } = useParams();
+
+  // const [product, setProduct] = useState({});
+  const [loading, setLoading] = useState(false);
   const { cartItems, addItem, addMore } = useContext(CartContext);
   const navigate = useNavigate();
-  const { id } = useParams();
+
   const itemInCart = inCart(product, cartItems);
 
   useEffect(() => {
+    setLoading(true);
     getProduct(id)
-      .then((product) => setProduct(product))
-      .catch((err) => console.log(err))
-      .finally(setLoading(false));
-  }, [id]);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (!loading && !product) {
-    return null;
-  }
+      .then((product) => {
+        globalDispatch({ type: `setProduct`, data: product });
+        // setProduct(product);
+      })
+      .catch((error) => {
+        console.error(error);
+      })
+      .finally(() => setLoading(false));
+  }, [id, globalDispatch]);
 
   const {
     title,
@@ -46,63 +50,68 @@ const SingleProduct = (props) => {
   } = product;
   return (
     <Layout>
-      <div className="single-product-container">
-        <div className="product-image">
-          <img src={image} alt={title} />
-        </div>
+      {loading && <p className="loading-single-product">Loading...</p>}
 
-        <div className="product-details">
-          <div className="product-name-and-price">
-            <h1>{title}</h1>
-            <p>{price}</p>
+      {!loading && product && (
+        <div className="single-product-container">
+          <div className="product-image">
+            <img src={image} alt={title} />
           </div>
-          {!itemInCart ? (
-            <button
-              className="button is-black nomad-btn"
-              onClick={() => addItem(product)}
-            >
-              ADD TO CART
-            </button>
-          ) : (
-            <button
-              className="button is-white nomad-btn"
-              id="btn-white-outline"
-              onClick={() => addMore(product)}
-            >
-              ADD MORE
-            </button>
-          )}
-          {username ? (
-            <button
-              className="button is-black nomad-btn"
-              id="btn-white-outline"
-              onClick={() => {
-                navigate("/cart");
-              }}
-            >
-              PROCEED TO CHECKOUT
-            </button>
-          ) : (
-            <button
-              className="button is-black nomad-btn"
-              id="btn-white-outline"
-              onClick={() => {
-                navigate("/auth/login");
-              }}
-            >
-              LOGIN TO PURCHASE
-            </button>
-          )}
-          <div className="product-description">
-            <h3>{variety}</h3>
-            <h4>Points: {points}</h4>
-            <p>{description}</p>
-            <p>
-              📍 {winery}, {province}, {region}, {country}.
-            </p>
+
+          <div className="product-details">
+            <div className="product-name-and-price">
+              <h1>{title}</h1>
+              <p>{formatPrice(price)}</p>
+            </div>
+            {!itemInCart ? (
+              <button
+                className="button is-black nomad-btn"
+                onClick={() => addItem(product)}
+              >
+                ADD TO CART
+              </button>
+            ) : (
+              <button
+                className="button is-white nomad-btn"
+                id="btn-white-outline"
+                onClick={() => addMore(product)}
+              >
+                ADD MORE
+              </button>
+            )}
+            {username ? (
+              <button
+                className="button is-black nomad-btn"
+                id="btn-white-outline"
+                onClick={() => {
+                  navigate("/cart");
+                }}
+              >
+                PROCEED TO CHECKOUT
+              </button>
+            ) : (
+              <button
+                className="button is-black nomad-btn"
+                id="btn-white-outline"
+                onClick={() => {
+                  navigate("/auth/login");
+                }}
+              >
+                LOGIN TO PURCHASE
+              </button>
+            )}
+            <div className="product-description">
+              <h3>{variety}</h3>
+              <h4>Points: {points}</h4>
+              <p className="description">{description}</p>
+              <p className="location">
+                📍 {winery}, {province}, {region}, {country}.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
+      )}
+      {!loading && !product && <p>Can't find that wine</p>}
     </Layout>
   );
 };

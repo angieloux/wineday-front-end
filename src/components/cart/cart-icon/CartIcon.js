@@ -11,7 +11,7 @@ const CartIcon = () => {
   return (
     <div className="cart-icon-container" onClick={() => navigate("/cart")}>
       <img src={cartIcon} alt="Cart Icon" />
-      {itemCount > 0 && <span className="cart-count"> {itemCount}</span>}
+      {itemCount > 0 ? <span className="cart-count"> {itemCount}</span> : null}
     </div>
   );
 };

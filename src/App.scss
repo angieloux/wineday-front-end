@@ -1,7 +1,10 @@
 @charset "utf-8";
 
 // Import from bulma
+@import "../node_modules/bulma/css/bulma.css";
 @import "../node_modules/bulma/sass/utilities/_all.sass";
+@import "../node_modules/bulma/sass/components/_all.sass";
+@import "../node_modules/bulma/sass/form/_all.sass";
 @import "../node_modules/bulma/sass/elements/button.sass";
 @import "../node_modules/bulma/sass/elements/container.sass";
 @import "../node_modules/bulma/sass/layout/hero.sass";
@@ -111,7 +114,7 @@ form {
 }
 
 .form-error {
-  border: 1px solid red;
+  border: 1px solid darkslategray;
 }
 
 ::placeholder {
@@ -143,10 +146,10 @@ form {
 }
 
 .error {
-  border: 1px solid red;
+  border: 1px solid darkslategray;
 }
 
 .error-message {
-  color: red;
+  color: darkslategray;
   font-size: 1.5rem;
 }

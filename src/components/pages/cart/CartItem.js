@@ -5,6 +5,7 @@ import {
   TrashIcon,
 } from "../../../assets/icons";
 import image from "../../../assets/product.jpg";
+import { formatPrice } from "../../../utils/stringUtils";
 
 const CartItem = (props) => {
   const {
@@ -26,7 +27,7 @@ const CartItem = (props) => {
       </div>
       <div className="product-name-and-price">
         <h4>{title}</h4>
-        <p>{price}</p>
+        <p>{formatPrice(price)}</p>
       </div>
       <div className="quantity">
         <p>{`Quantity: ${quantity}`}</p>

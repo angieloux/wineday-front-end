@@ -5,20 +5,12 @@ import CartIcon from "../cart/cart-icon/CartIcon";
 import logoIcon from "../../assets/logo.png";
 import { useGlobalState } from "../../context/globalContext";
 import { CartContext } from "../../context/cartContext";
-// import Search from "../shared/Search";
 
 export const Header = () => {
   const { globalStore, globalDispatch } = useGlobalState();
   const { clearCart } = useContext(CartContext);
   const { username } = globalStore;
   const navigate = useNavigate();
-
-  // function handleChange(e) {}
-
-  function handleSearch(e) {
-    e.preventdefault();
-    console.log(e.target.name);
-  }
 
   function handleLogout() {
     globalDispatch({ type: "removeLoggedInUser" });
@@ -40,9 +32,7 @@ export const Header = () => {
           <li>
             <Link to="/products">Shop</Link>
           </li>
-          <li>
-            <Link to="/products?q=red">Red</Link>
-          </li>
+
           {!username && (
             <li>
               <Link to="/auth/login">Log In</Link>
@@ -61,21 +51,22 @@ export const Header = () => {
               <Link to="/auth/register">Sign Up</Link>
             </li>
           )}
-          <li>
-            <form onSubmit={handleSearch}>
-              <input
-                name="q"
-                type="text"
-                placeholder="Search..."
-                className="search-box"
-              ></input>
-              <button className="search-button" type="submit">
-                🔎
-              </button>
-            </form>
-          </li>
         </ul>
       </div>
+      <ul>
+        <li>
+          <Link to="/products?q=cabernet">Cabernet</Link>
+        </li>
+        <li>
+          <Link to="/products?q=chardonnay">Chardonnay</Link>
+        </li>
+        <li>
+          <Link to="/products?q=rhône">Rhône</Link>
+        </li>
+        <li>
+          <Link to={`/products?q=italy`}>Italy</Link>
+        </li>
+      </ul>
       <div className="account-container">
         <div className="nav-greeting">Welcome, {username || "guest"}</div>
         <CartIcon />
@@ -84,4 +75,4 @@ export const Header = () => {
   );
 };
 
-export default Header;
+// export default Header;

@@ -4,6 +4,7 @@ import { getOrders } from "../../../services/orderServices";
 import Layout from "../../shared/Layout";
 import OrderPreview from "./OrderPreview";
 import "./orders.styles.scss";
+import { Heading } from "react-bulma-components";
 
 const OrdersList = () => {
   const { globalStore, globalDispatch } = useGlobalState();
@@ -26,11 +27,11 @@ const OrdersList = () => {
   return (
     <Layout>
       <>
-        <h1 className="orders-title">Orders</h1>
+        <Heading className="orders-title">Orders</Heading>
         {!loading && orders.length === 0 && (
           <div className="empty-orders">Your orders are empty</div>
         )}
-        {loading && <p> loading</p>}
+        {loading && <p className="order-loading"> Loading...</p>}
         {!loading && orders.length > 0 && (
           <div className="orders-page">
             <div className="order-item-container">{allOrders}</div>

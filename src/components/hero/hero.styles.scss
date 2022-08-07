@@ -8,11 +8,13 @@ span {
 }
 
 .hero-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-family: "Times New Roman", Times, serif;
+  font-weight: bold;
 }
 
 @media (min-width: 1024px) {
-  .hero-image {
+  .hero-title {
     font-size: 2.5rem;
   }
 }
@@ -21,7 +23,3 @@ span {
 //     min-height: 80vh;
 //   }
 // }
-
-#shop-now-btn {
-  margin-top: -15px;
-}

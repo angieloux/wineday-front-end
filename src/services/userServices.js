@@ -21,6 +21,5 @@ export const retrieveUserFromJWT = async () => {
 
 export async function signUp(data) {
   const response = await winedayAPI.post("/auth/register", data);
-  //console.log(response.data)
   return response.data;
 }

@@ -1,7 +1,7 @@
 .nav-menu {
   display: flex;
-  padding: 1rem;
   align-items: center;
+  padding: 1rem;
 
   a {
     text-decoration: none;
@@ -39,5 +39,16 @@
     div {
       margin: 0 1rem;
     }
+  }
+}
+
+.search-form {
+  display: flex;
+  margin-left: auto;
+  margin: 0 1rem;
+  align-items: center;
+  button {
+    height: 100%;
+    margin-left: 10px;
   }
 }

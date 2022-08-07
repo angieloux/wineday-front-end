@@ -1,11 +1,10 @@
 import winedayAPI from "../config/api";
 
-export const createOrder = async (user_id, total, number) => {
+export const createOrder = async (user_id, total) => {
   try {
     const response = await winedayAPI.post("/checkout", {
       user_id,
       total,
-      number,
     });
     return response.data;
   } catch (err) {
@@ -16,7 +15,6 @@ export const createOrder = async (user_id, total, number) => {
 export const getOrders = async () => {
   try {
     const response = await winedayAPI.get("/orders");
-    console.log(response.data);
     return response.data;
   } catch (err) {
     throw err;
