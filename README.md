@@ -15,7 +15,6 @@ The other relavant repos can be found here:
 - [The back-end repo](https://github.com/angieloux/wineday-back-end)
 - [Original planning repository](https://github.com/angieloux/wineday-docs)
 - [User testing workbook](https://docs.google.com/spreadsheets/d/e/2PACX-1vTbDicEG5nChHB6cVBtfCqUXtTXXtG7mIQkaQ5SaVdKJujoLzqwBdMsFHrW3Xwj4msacdTLbfFt1of1/pubhtml) containing multiple stages of user testing, including 3 development stages and 2 production stages.
--
 
 # Local installation
 
