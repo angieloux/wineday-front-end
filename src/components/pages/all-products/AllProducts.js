@@ -51,8 +51,6 @@ const AllProducts = () => {
       .finally(() => setLoading(false));
   }, [searchParams, globalDispatch]);
 
-  const found = products.length > 0 ? true : false;
-
   return (
     <Layout>
       {loading && <Heading align="center">Finding wines...</Heading>}
@@ -77,13 +75,13 @@ const AllProducts = () => {
         </form>
       </div>
       <div className="products-list-container">
-        {!loading && found && (
+        {!loading && products.length > 0 && (
           <div className="products-list">{allProducts}</div>
         )}
-        {!loading && !found && (
-          <Heading align="center">
+        {products.length === 0 && !loading && (
+          <p align="center">
             Oops, nothing found. Try searching for something else.
-          </Heading>
+          </p>
         )}
       </div>
     </Layout>
