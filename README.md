@@ -129,7 +129,9 @@ As mentioned above, testing within the app can be tested with `yarn test` . Back
 
 ## Project management (Trello)
 
-As this was a solo project, keeping track of my tasks and timelines was exceptionally important. Part B Trello screenshots can be seen below. I also extensively used git branching to keep track of each stage of the project (separated into features, authentication, testing, staging, etc). This process made me able to keep track of my code and progress, and also allowed me to revert/compare with earlier versions if needed when debugging.
+As this was a solo project, keeping track of my tasks and timelines was exceptionally important. Part B Trello screenshots can be seen below.
+
+I also extensively used git branching to keep track of each stage of the project (separated into various features/things I was working on, e.g. authentication, testing, search, orders, cart, etc). Once I was happy with a branch, I would merge it into the staging branch. This staging branch was linked to my deployed website on Netlify, so I could ensure there were no issues with the live website before then merging with the main branch. This process made me able to keep track of my code and progress, and also allowed me to revert/compare with earlier versions if needed when debugging.
 
 <details>
 
