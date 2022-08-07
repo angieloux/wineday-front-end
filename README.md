@@ -122,7 +122,7 @@ The original wireframes show features like breadcrumbs & toasts (for when a cust
 
 ## User Testing
 
-Testing has been carried out throughout all stages of the project, from development through to production. A testing spreadsheet can be found [here] that includes 6 sheets (https://docs.google.com/spreadsheets/d/e/2PACX-1vTbDicEG5nChHB6cVBtfCqUXtTXXtG7mIQkaQ5SaVdKJujoLzqwBdMsFHrW3Xwj4msacdTLbfFt1of1/pubhtml#). A pdf version of all pages are also available [here](./docs/user_testing/UserTesting.pdf) in the docs/user_testing section of this repo.
+Testing has been carried out throughout all stages of the project, from development through to production. A testing spreadsheet can be found [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vTbDicEG5nChHB6cVBtfCqUXtTXXtG7mIQkaQ5SaVdKJujoLzqwBdMsFHrW3Xwj4msacdTLbfFt1of1/pubhtml#) that includes 6 sheets . A pdf version of all pages are also available [here](./docs/user_testing/UserTesting.pdf) in the docs/user_testing section of this repo.
 
 As mentioned above, testing within the app can be tested with `yarn test` . Back end tests can be tested with `rspec`. Manual tests have also been included in the `client.http` file in the [root folder of the backend repo](https://github.com/angieloux/wineday-back-end/blob/main/client.http).
 
@@ -134,7 +134,7 @@ I also extensively used git branching to keep track of each stage of the project
 
 <details>
 
-<summary style="font-weight:bold;">CLICK HERE to view wireframe screenshots for mobile</summary>
+<summary style="font-weight:bold;">CLICK HERE to view Trello screenshots for Part B</summary>
 
 ![Trello screenshot 14](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-23%20at%204.37.26%20pm.png)
 ![Trello screenshot 15](docs/trello-screenshots/part_b/Screen%20Shot%202022-07-23%20at%208.56.51%20pm.png)
