@@ -26,6 +26,7 @@ const SingleProduct = (props) => {
 
   useEffect(() => {
     setLoading(true);
+
     if (id > 28) navigate("/NotFound");
     getProduct(id)
       .then((product) => {
@@ -35,6 +36,7 @@ const SingleProduct = (props) => {
         console.error(error);
       })
       .finally(() => setLoading(false));
+    // eslint-disable-next-line
   }, [id, globalDispatch]);
 
   const {
